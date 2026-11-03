@@ -1,0 +1,2200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSG Mockup (Styled) &mdash; External Biller Delegated Access</title>
+<link rel="stylesheet" href="_shared/styled.css">
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
+<div class="h-full flex flex-col">
+  <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
+    <b>STYLED MOCKUP &mdash; ROLE-MATRIX &mdash; External Biller Delegated Access (<code>external-biller-delegated-access.md</code>).</b> Delegated access grants for outside billing companies and each grant&rsquo;s delegate staff (ADR-522). A grant becomes Active once its BAA is marked on file. Org Admin and Owner only. Dialogs are drawn under <b>Reference &mdash; dialogs and states</b> below.
+  </div>
+  <div class="relative flex-1 min-h-0 flex">
+    <div class="psg-nav-toggle w-14 [&:has(:checked)]:w-56 shrink-0 bg-slate-50 text-slate-700 flex flex-col border-r border-slate-200" role="navigation" aria-label="Global navigation">
+      <label class="cursor-pointer select-none flex items-center justify-between px-3.5 py-3 border-b border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Collapse/expand navigation">
+        <input type="checkbox" class="sr-only" aria-label="Collapse or expand navigation">
+        <span class="hidden [.psg-nav-toggle:has(:checked)_&]:inline text-slate-900 font-bold text-md tracking-wide">PSG</span>
+        <span class="flex items-center justify-center w-6 h-6 rounded-md border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors">
+          <span class="hidden [.psg-nav-toggle:has(:checked)_&]:inline-flex"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-chevron-left w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+</span>
+          <span class="inline-flex [.psg-nav-toggle:has(:checked)_&]:hidden"><svg
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+        </span>
+      </label>
+
+      <div class="hidden [.psg-nav-toggle:has(:checked)_&]:flex [.psg-nav-toggle:has(:checked)_&]:flex-col flex-1 min-h-0">
+        <details class="relative border-b border-slate-200">
+          <summary class="[&::-webkit-details-marker]:hidden marker:content-none list-none cursor-pointer flex items-center gap-2 px-3.5 py-2.5 bg-white text-xs text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Location Switcher &mdash; your active location: Downtown Office. Click to switch between the Locations you&rsquo;re assigned to; the change applies immediately, with no re-sign-in. Shown only when the practice has 2+ Locations. Drawn on every mockup screen as shared chrome, the way a Location-scoped user (Front Desk, Provider, Office Admin) sees it; in the product an Org Admin, Central Scheduler or Central Biller doesn&rsquo;t get it (even on screens shown as Org Admin) and uses each module&rsquo;s own Location filter instead. The Owner gets every Location plus All locations (identity-authentication.md AC-59, 2026-10-06), and sign-in restores their last choice." aria-haspopup="menu">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
+            <span class="truncate">Downtown Office</span>
+            <svg
+  class="lucide lucide-chevron-down w-3 h-3 ml-auto text-slate-500 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+
+          </summary>
+          <div class="absolute left-2 top-full mt-1 z-50 w-64 rounded-md border border-slate-200 bg-white shadow-lg p-1.5 text-sm text-slate-700"><div class="px-2 pt-1 pb-1 text-2xs font-semibold uppercase tracking-wide text-slate-600">Switch location</div><div role="menu" aria-label="Switch location" class="space-y-0.5"><button type="button" role="menuitemradio" aria-checked="true" class="w-full flex items-start gap-2 rounded px-2 py-1.5 text-left text-xs bg-slate-50 font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Current location."><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3.5 h-3.5 text-primary shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+<span class="min-w-0"><span class="block">Downtown Office</span><span class="block text-2xs font-normal text-slate-600">142 Main St, Springfield, IL</span></span></button><button type="button" role="menuitemradio" aria-checked="false" class="w-full flex items-start gap-2 rounded px-2 py-1.5 text-left text-xs text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Switch to Uptown Annex &mdash; this screen and every Location-scoped module re-scope immediately; no sign-in needed."><span class="w-3.5 shrink-0"></span><span class="min-w-0"><span class="block">Uptown Annex</span><span class="block text-2xs font-normal text-slate-600">88 Birch Ave, Springfield, IL</span></span></button></div><p class="border-t border-slate-100 mt-1.5 pt-1.5 px-2 text-2xs text-slate-600 leading-relaxed">Schedule, Conversations, Ledger, Insurance, Action Center and Operations Dashboard follow your choice right away. It&rsquo;s also used the next time you sign in.</p></div>
+        </details>
+
+        <div class="relative px-3 py-2.5 border-b border-slate-200">
+          <a href="patient-search.html" class="block cursor-pointer" title="Patient Search (patient-search.md) — Global Nav search field entry point (Entry Points), present on every screen. Typing here would surface a live autocomplete overlay — top matches, a prepended &quot;Create new patient&quot; row, and an appended &quot;See all N results&quot; row once truncated — that this static, no-JS corpus doesn't build (same flagged-not-built treatment as every other live-typing mechanic here, per page_shell()'s own docstring); clicking through shows the finder overlay&#39;s two states instead (patient-search.html — since 2026-09-29, ADR-639 revision, Patient Search is the finder only; See all / Enter open Patients) (added 2026-09-10, styled Wave 2 PATIENT-SEARCH batch — mirrors low-fi's own nav_html() update, same batch shape, 2026-09-04).">
+          <div class="relative">
+            <svg
+  class="lucide lucide-search w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+            <input disabled placeholder="Search patients&hellip;"
+              class="w-full pl-8 pr-9 py-1.5 rounded-md bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-600 pointer-events-none" />
+          </div>
+          </a>
+          <a href="command-palette.html" class="hidden lg:inline-flex items-center justify-center min-w-[24px] h-6 px-1 rounded border border-slate-200 bg-slate-50 text-[10px] font-medium text-slate-600 hover:bg-white hover:text-slate-900 hover:border-slate-300 absolute right-4 top-1/2 -translate-y-1/2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Command palette (&#8984;K / Ctrl+K) &mdash; jump to a patient, contact, appointment or module, or start an action." aria-label="Open command palette"><kbd class="font-sans">&#8984;K</kbd></a>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
+        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+<span>Schedule</span></a>
+        <a href="patients.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />
+</svg>
+<span>Patients</span></a>
+        <a href="day-plan.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-sunrise w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 2v8" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m8 6 4-4 4 4" />
+  <path d="M16 18a4 4 0 0 0-8 0" />
+</svg>
+<span>Day Plan</span></a>
+        <a href="ledger.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-banknote w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="12" x="2" y="6" rx="2" />
+  <circle cx="12" cy="12" r="2" />
+  <path d="M6 12h.01M18 12h.01" />
+</svg>
+<span>Ledger</span></a>
+        <a href="claim-workspace.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-shield w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+</svg>
+<span>Insurance</span></a>
+        <a href="unified-inbox.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-message-square w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+<span>Conversations</span></a>
+        <a href="contacts-directory.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-book-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 13a3 3 0 1 0-6 0" />
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+  <circle cx="12" cy="8" r="2" />
+</svg>
+<span>Contacts</span></a>
+        <a href="inventory-item-stock.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-package w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" />
+</svg>
+<span>Inventory</span></a>
+        <a href="relationships-referring-providers.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-users w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg>
+<span>Practice Growth</span></a>
+        <a href="forms-library-designer.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-megaphone w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</svg>
+<span>Comm Design</span></a>
+        <a href="analytics-operational-dashboard.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-bar-chart-2 w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 21v-6" />
+  <path d="M12 21V3" />
+  <path d="M19 21V9" />
+</svg>
+<span>Practice Outcomes</span></a>
+        <a href="note-template-designer-library.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-clipboard-list w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+  <path d="M12 11h4" />
+  <path d="M12 16h4" />
+  <path d="M8 11h.01" />
+  <path d="M8 16h.01" />
+</svg>
+<span>Chart</span></a>
+        <a href="treatment-plan-worklist.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-route w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg>
+<span>Treatment Plan</span></a>
+        <a href="document-repository.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-file-text w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" />
+</svg>
+<span>Documents</span></a>
+        <a href="journal.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-book-open w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v16" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+</svg>
+<span>Office Journal</span></a>
+        <a href="plans-packages.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-badge-check w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+<span>Plans &amp; Packages</span></a>
+        <a href="wc-state-reporting-deadline-tracking.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-hard-hat w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" />
+  <path d="M14 6a6 6 0 0 1 6 6v3" />
+  <path d="M4 15v-3a6 6 0 0 1 6-6" />
+  <rect x="2" y="15" width="20" height="4" rx="1" />
+</svg>
+<span>Workers’ Compensation</span></a>
+        <a href="global-nav.html#reorder-panel" class="flex items-center gap-2.5 mt-1.5 px-2.5 min-h-[28px] py-1 rounded-md text-xs text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Reorder modules, set your start page, or reset"><svg
+  class="lucide lucide-sliders-horizontal w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 5H3" />
+  <path d="M12 19H3" />
+  <path d="M14 3v4" />
+  <path d="M16 17v4" />
+  <path d="M21 12h-9" />
+  <path d="M21 19h-5" />
+  <path d="M21 5h-7" />
+  <path d="M8 10v4" />
+  <path d="M8 12H3" />
+</svg>
+<span>Customize</span></a>
+        </div>
+
+        <div class="border-t border-slate-200 px-2 py-2 space-y-0.5">
+        <a href="my-settings.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-circle-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="10" r="3" />
+  <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+</svg>
+<span>My Settings</span></a>
+        <a href="admin-shell.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm bg-blue-100 text-blue-700 font-semibold shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page"><svg
+  class="lucide lucide-settings w-4 h-4 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" />
+</svg>
+<span>Admin</span></a>
+        <a href="audit-log-console.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-scale w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg>
+<span>Compliance</span></a>
+        <a href="login.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+  class="lucide lucide-log-out w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 17 5-5-5-5" />
+  <path d="M21 12H9" />
+  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+</svg>
+<span>Log Out</span></a>
+          <div class="flex items-center justify-between rounded-md border border-slate-300  px-2.5 py-[7px] mt-1 text-sm" title="Time Clock Badge (ADR-515) — current time and punch-state, generation-time snapshot. Phase 1: neutral, non-interactive (punching arrives with Time Clock, Phase 2). Clocked-In tint: --time-clock-active-bg/-fg (green-500/green-400), ADR-515 Decision 6, corrected ADR-516.">
+          <span class="flex items-center gap-2 text-slate-700"><svg
+  class="lucide lucide-clock w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" />
+</svg>
+<span class="font-semibold tabular-nums">4:50 PM</span></span>
+          <span class="flex items-center gap-1.5 text-xs text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
+            Clocked out
+          </span>
+        </div>
+        </div>
+      </div>
+
+      <div class="flex [.psg-nav-toggle:has(:checked)_&]:hidden flex-col flex-1 min-h-0 items-center">
+        <details class="relative mt-2">
+          <summary class="[&::-webkit-details-marker]:hidden marker:content-none list-none cursor-pointer flex items-center justify-center w-8 h-8 rounded-md bg-white border border-slate-200 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Location Switcher &mdash; your active location: Downtown Office. Click to switch between the Locations you&rsquo;re assigned to; the change applies immediately, with no re-sign-in. Shown only when the practice has 2+ Locations. Drawn on every mockup screen as shared chrome, the way a Location-scoped user (Front Desk, Provider, Office Admin) sees it; in the product an Org Admin, Central Scheduler or Central Biller doesn&rsquo;t get it (even on screens shown as Org Admin) and uses each module&rsquo;s own Location filter instead. The Owner gets every Location plus All locations (identity-authentication.md AC-59, 2026-10-06), and sign-in restores their last choice." aria-haspopup="menu">
+            <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span><span class="sr-only">Location: Downtown Office</span>
+          </summary>
+          <div class="absolute left-0 top-full mt-1 z-50 w-64 rounded-md border border-slate-200 bg-white shadow-lg p-1.5 text-sm text-slate-700"><div class="px-2 pt-1 pb-1 text-2xs font-semibold uppercase tracking-wide text-slate-600">Switch location</div><div role="menu" aria-label="Switch location" class="space-y-0.5"><button type="button" role="menuitemradio" aria-checked="true" class="w-full flex items-start gap-2 rounded px-2 py-1.5 text-left text-xs bg-slate-50 font-semibold text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Current location."><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3.5 h-3.5 text-primary shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+<span class="min-w-0"><span class="block">Downtown Office</span><span class="block text-2xs font-normal text-slate-600">142 Main St, Springfield, IL</span></span></button><button type="button" role="menuitemradio" aria-checked="false" class="w-full flex items-start gap-2 rounded px-2 py-1.5 text-left text-xs text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Switch to Uptown Annex &mdash; this screen and every Location-scoped module re-scope immediately; no sign-in needed."><span class="w-3.5 shrink-0"></span><span class="min-w-0"><span class="block">Uptown Annex</span><span class="block text-2xs font-normal text-slate-600">88 Birch Ave, Springfield, IL</span></span></button></div><p class="border-t border-slate-100 mt-1.5 pt-1.5 px-2 text-2xs text-slate-600 leading-relaxed">Schedule, Conversations, Ledger, Insurance, Action Center and Operations Dashboard follow your choice right away. It&rsquo;s also used the next time you sign in.</p></div>
+        </details>
+
+        <a href="command-palette.html" class="flex items-center justify-center w-8 h-8 mt-2 mb-2 rounded-md bg-white border border-slate-200 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Search &amp; commands (&#8984;K / Ctrl+K) &mdash; opens the command palette: patients, contacts, appointments, modules and actions." aria-label="Open command palette">
+          <svg
+  class="lucide lucide-search w-3.5 h-3.5 text-slate-500"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        </a>
+
+        <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
+        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+  class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</a>
+        <a href="patients.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Patients" aria-label="Patients"><svg
+  class="lucide lucide-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />
+</svg>
+</a>
+        <a href="day-plan.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Day Plan" aria-label="Day Plan"><svg
+  class="lucide lucide-sunrise w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 2v8" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m8 6 4-4 4 4" />
+  <path d="M16 18a4 4 0 0 0-8 0" />
+</svg>
+</a>
+        <a href="ledger.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Ledger" aria-label="Ledger"><svg
+  class="lucide lucide-banknote w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="12" x="2" y="6" rx="2" />
+  <circle cx="12" cy="12" r="2" />
+  <path d="M6 12h.01M18 12h.01" />
+</svg>
+</a>
+        <a href="claim-workspace.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Insurance" aria-label="Insurance"><svg
+  class="lucide lucide-shield w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+</svg>
+</a>
+        <a href="unified-inbox.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Conversations" aria-label="Conversations"><svg
+  class="lucide lucide-message-square w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</a>
+        <a href="contacts-directory.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Contacts" aria-label="Contacts"><svg
+  class="lucide lucide-book-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 13a3 3 0 1 0-6 0" />
+  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+  <circle cx="12" cy="8" r="2" />
+</svg>
+</a>
+        <a href="inventory-item-stock.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Inventory" aria-label="Inventory"><svg
+  class="lucide lucide-package w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" />
+</svg>
+</a>
+        <a href="relationships-referring-providers.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Practice Growth" aria-label="Practice Growth"><svg
+  class="lucide lucide-users w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg>
+</a>
+        <a href="forms-library-designer.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Comm Design" aria-label="Comm Design"><svg
+  class="lucide lucide-megaphone w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" />
+  <path d="M8 6v8" />
+</svg>
+</a>
+        <a href="analytics-operational-dashboard.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Practice Outcomes" aria-label="Practice Outcomes"><svg
+  class="lucide lucide-bar-chart-2 w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 21v-6" />
+  <path d="M12 21V3" />
+  <path d="M19 21V9" />
+</svg>
+</a>
+        <a href="note-template-designer-library.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Chart" aria-label="Chart"><svg
+  class="lucide lucide-clipboard-list w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+  <path d="M12 11h4" />
+  <path d="M12 16h4" />
+  <path d="M8 11h.01" />
+  <path d="M8 16h.01" />
+</svg>
+</a>
+        <a href="treatment-plan-worklist.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Treatment Plan" aria-label="Treatment Plan"><svg
+  class="lucide lucide-route w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg>
+</a>
+        <a href="document-repository.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Documents" aria-label="Documents"><svg
+  class="lucide lucide-file-text w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" />
+</svg>
+</a>
+        <a href="journal.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Office Journal" aria-label="Office Journal"><svg
+  class="lucide lucide-book-open w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v16" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+</svg>
+</a>
+        <a href="plans-packages.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Plans &amp; Packages" aria-label="Plans &amp; Packages"><svg
+  class="lucide lucide-badge-check w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+</a>
+        <a href="wc-state-reporting-deadline-tracking.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Workers’ Compensation" aria-label="Workers’ Compensation"><svg
+  class="lucide lucide-hard-hat w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" />
+  <path d="M14 6a6 6 0 0 1 6 6v3" />
+  <path d="M4 15v-3a6 6 0 0 1 6-6" />
+  <rect x="2" y="15" width="20" height="4" rx="1" />
+</svg>
+</a>
+        </div>
+
+        <div class="border-t border-slate-200 w-full py-2 space-y-1.5 flex flex-col items-center">
+        <a href="my-settings.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="My Settings" aria-label="My Settings"><svg
+  class="lucide lucide-circle-user w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="10" r="3" />
+  <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+</svg>
+</a>
+        <a href="admin-shell.html" class="flex items-center justify-center w-8 h-8 rounded-md bg-blue-100 text-blue-700 shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page" title="Admin" aria-label="Admin"><svg
+  class="lucide lucide-settings w-4 h-4 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" />
+</svg>
+</a>
+        <a href="audit-log-console.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Compliance" aria-label="Compliance"><svg
+  class="lucide lucide-scale w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg>
+</a>
+        <a href="login.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Log Out" aria-label="Log Out"><svg
+  class="lucide lucide-log-out w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 17 5-5-5-5" />
+  <path d="M21 12H9" />
+  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+</svg>
+</a>
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <svg
+  class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" />
+</svg>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 min-w-0 flex flex-col bg-slate-50">
+
+      <div class="relative flex-1 min-h-0 overflow-y-auto flex flex-col">
+      <div class="shrink-0 flex items-center gap-3 px-4 py-2.5 border-b border-slate-200 bg-white flex-wrap">
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-600">External Biller Delegated Access &middot; ROLE-MATRIX-EXTERNAL-BILLER-DELEGATED-ACCESS &middot; Present from Phase 1</span>
+        <span class="text-xs text-slate-600">Shown as <span class="font-semibold text-slate-600">Org Admin/Owner, tenant-wide</span></span>
+      </div>
+      <div class="flex-1 min-h-0 flex">
+        <aside class="w-48 shrink-0 bg-slate-50 border-r border-slate-200 overflow-y-auto py-2" aria-label="Admin Shell settings rail">
+        <a href="subscription-billing-console.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Hosts: subscription-billing-console.md (Wave 2, Draft) / trial-expiry-delinquency-lockout-cascade.md (Wave 3, Draft, batched 2026-09-14, TENANT-GOVERNANCE-METERING) — both Owner only. This rail row deep-links to the console; the Lockout Cascade screen is reached from there via its persistent-header status pill."><svg
+  class="lucide lucide-credit-card w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+</svg>
+<span>Billing</span></a>
+        <a href="cascade-override-config-console.html#complexity-tier" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: cascade-override-config-console.md (Wave 3, Draft) — Org Admin/Owner only"><svg
+  class="lucide lucide-gauge w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 14 4-4" />
+  <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+</svg>
+<span>Complexity Tier</span></a>
+        <a href="cascade-override-config-console.html#cascade-tenant" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: cascade-override-config-console.md (Wave 3, Draft)"><svg
+  class="lucide lucide-sliders-horizontal w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 5H3" />
+  <path d="M12 19H3" />
+  <path d="M14 3v4" />
+  <path d="M16 17v4" />
+  <path d="M21 12h-9" />
+  <path d="M21 19h-5" />
+  <path d="M21 5h-7" />
+  <path d="M8 10v4" />
+  <path d="M8 12H3" />
+</svg>
+<span>Cascade Overrides</span></a>
+        <a href="clinical-view-scope-settings.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Hosts: module-visibility-console.md / clinical-view-scope-settings.md / chart-module-settings.md"><svg
+  class="lucide lucide-layers w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</svg>
+<span>Org Admin Layer</span></a>
+        <a href="workers-compensation-settings.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: workers-compensation-settings.md (Wave 5, Draft, ADR-600). Retail, Time Clock and Lab Orders settings join this group at Phase 2."><svg
+  class="lucide lucide-toggle-right w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="15" cy="12" r="3" />
+  <rect width="20" height="14" x="2" y="5" rx="7" />
+</svg>
+<span>Module Settings</span></a>
+        <a href="sso-idp-configuration.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: sso-idp-configuration.md"><svg
+  class="lucide lucide-key-round w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z" />
+  <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+<span>Identity Provider</span></a>
+        <a href="integration-connections.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Hosts: integration-connections.md / messaging-channels.md (row 33, ADR-691)"><svg
+  class="lucide lucide-plug w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22v-5" />
+  <path d="M15 8V2" />
+  <path d="M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z" />
+  <path d="M9 8V2" />
+</svg>
+<span>Integrations</span></a>
+        <a href="practice-setup-settings.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Hosts, in-group order (admin-shell.md rows 16, 22, 23, 25, 34, 35, 31, 32): practice-setup-settings.md / case-type-registry.md / treatment-plan-protocol-templates.md / ledger-settings.md / appointment-types.md / rooms-equipment.md / schedule-settings.md / day-plan-settings.md (rows 31-32 added 2026-09-24, rows 34-35 added 2026-09-26)"><svg
+  class="lucide lucide-settings-2 w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 17H5" />
+  <path d="M19 7h-9" />
+  <circle cx="17" cy="17" r="3" />
+  <circle cx="7" cy="7" r="3" />
+</svg>
+<span>Practice Setup</span></a>
+        <a href="locations.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: locations.md (Wave 0)"><svg
+  class="lucide lucide-map-pin w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg>
+<span>Locations</span></a>
+        <a href="brand-management.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: brand-management.md (built 2026-09-28, identity tier)"><svg
+  class="lucide lucide-palette w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+<span>Brand Management</span></a>
+        <a href="staff-user-management.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-blue-600 bg-white text-slate-900 font-semibold" aria-current="true" title="Staff/User Management, Role Assignment, Provider Directory, External Biller Delegates, Required training"><svg
+  class="lucide lucide-user-cog w-4 h-4 shrink-0 text-blue-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 15H6a4 4 0 0 0-4 4v2" />
+  <path d="m14.305 16.53.923-.382" />
+  <path d="m15.228 13.852-.923-.383" />
+  <path d="m16.852 12.228-.383-.923" />
+  <path d="m16.852 17.772-.383.924" />
+  <path d="m19.148 12.228.383-.923" />
+  <path d="m19.53 18.696-.382-.924" />
+  <path d="m20.772 13.852.924-.383" />
+  <path d="m20.772 16.148.924.383" />
+  <circle cx="18" cy="15" r="3" />
+  <circle cx="9" cy="7" r="4" />
+</svg>
+<span>Users</span></a>
+        <a href="preferred-vendors.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Host: preferred-vendors.md"><svg
+  class="lucide lucide-truck w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+  <path d="M15 18H9" />
+  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+  <circle cx="17" cy="18" r="2" />
+  <circle cx="7" cy="18" r="2" />
+</svg>
+<span>Vendors</span></a>
+        <a href="alert-definition-registry.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Alert definitions: the alerts staff can put on a patient, and whether each is required, available or hidden at each location"><svg
+  class="lucide lucide-bell w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+  <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+</svg>
+<span>Alerts</span></a>
+        <a href="quick-reply-templates.html" class="flex items-center gap-2.5 px-3.5 py-2 text-sm border-l-[3px] border-transparent text-slate-600 hover:bg-white hover:text-slate-900 transition-colors" title="Hosts: quick-reply-templates.md / Inbound Routing Rules and the Conversation Tag catalog (conversations.md)"><svg
+  class="lucide lucide-message-circle w-4 h-4 shrink-0 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+</svg>
+<span>Communications</span></a>
+        </aside>
+        <div class="flex-1 min-w-0 overflow-y-auto p-4">
+<div class="flex gap-1 shadow-[inset_0_-1px_0_theme(colors.slate.200)] mb-3 overflow-x-auto" aria-label="Users rail group tier switch"><a href="staff-user-management.html" class="flex items-center shrink-0 whitespace-nowrap px-3.5 py-2 rounded-t-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-sm font-medium" title="staff-user-management.md (Wave 1, Draft) — base account create/deactivate/unlock; hosts the User→Provider “designate as clinical” promotion action.">Staff / User Management</a><a href="staff-role-assignment.html" class="flex items-center shrink-0 whitespace-nowrap px-3.5 py-2 rounded-t-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-sm font-medium" title="staff-role-assignment.md (Wave 1, Draft) — who holds which Role(s), at what Location scope.">Role Assignment</a><a href="provider-record.html" class="flex items-center shrink-0 whitespace-nowrap px-3.5 py-2 rounded-t-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-sm font-medium" title="provider-record.md (Wave 1, Draft, ADR-473) — Provider-filtered extension of this same staff list (Identity & Credentialing, Additional Credential, Supervision Relationships, Availability). Batched 2026-09-10, styled Wave 1 PRACTICE-SETUP.">Provider Directory</a><span class="flex items-center shrink-0 whitespace-nowrap px-3.5 py-2 rounded-t-md border border-slate-200 border-b-white bg-white text-primary text-sm font-semibold shadow-[inset_0_2px_0_theme(colors.primary.DEFAULT)]" aria-current="page" title="external-biller-delegated-access.md (Wave 1, Draft, ADR-522) — Delegated Access Grant list/detail and each grant's external_biller roster.">External Biller Delegates</span><a href="training-curriculum.html#required-training" class="flex items-center shrink-0 whitespace-nowrap px-3.5 py-2 rounded-t-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 text-sm font-medium" title="Required training — which lessons each role must complete, and the completion rollup (Training & Curriculum). Org Admin / Owner edit; Office Admin sees the rollup for their own locations.">Required training</a></div>
+<div class="space-y-3">
+<div class="space-y-3">
+      <div class="shrink-0 flex flex-wrap items-center gap-2 px-4 py-2.5 border-b border-slate-200 bg-white min-h-[52px]" role="toolbar" aria-label="Grants toolbar">
+        <span class="text-sm font-semibold text-slate-900 shrink-0">Delegated access grants</span><button class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Status filter: Active, Pending BAA or Revoked. Default: Active and Pending BAA.">Status &#9662;</button>
+        <span class="ml-auto flex flex-wrap items-center gap-2"><a href="#eb-ref-issue" class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Issue grant &mdash; billing company name, Locations, optional expiry. Org Admin and Owner only."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-plus w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="M12 5v14" />
+</svg>
+Issue grant</a></span>
+      </div>
+<div class="rounded-lg border border-slate-200 bg-white ">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Delegated access grant list</span>
+    
+  </div>
+  <div class="p-4">
+<table class="w-full border-collapse -mx-1">
+  <thead><tr><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Billing Entity</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Status</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">BAA</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Location Scope</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Expiry</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Issued By</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2">Delegate Owner</th><th class="text-left text-xs font-semibold text-slate-600 px-3 py-2"></th></tr></thead>
+  <tbody><tr class="border-t border-slate-100" aria-selected="true"><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5 border-l-2 border-l-primary"><span class="font-semibold text-slate-900">Meridian RCM Partners</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">On file</span><span class="block text-xs text-slate-600 mt-0.5" title="Signed BAA: Meridian BAA 2026.pdf">Signed 06/01/2026</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5">All Locations</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5">12/31/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5">Priya Shah</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5">Casey Lin</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top bg-primary/5"><div class="flex items-center gap-1 justify-end"><a href="#eb-ref-edit" class="inline-flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Edit grant &mdash; Locations and expiry (renew)."><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-pencil w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+  <path d="m15 5 4 4" />
+</svg>
+</a><a href="#eb-ref-revoke" class="inline-flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:text-destructive hover:bg-destructive/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Revoke grant &mdash; opens a confirm."><svg
+  class="lucide lucide-ban w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M4.929 4.929 19.07 19.071" />
+</svg>
+</a></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Apex Billing Solutions</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-warning/50 text-warning-text border-warning px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Pending BAA</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-warning/50 text-warning-text border-warning px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Pending</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Downtown Office</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Priya Shah</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">Not yet designated</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex items-center gap-1 justify-end"><a href="#eb-ref-baa" class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Mark BAA on file &mdash; records the signed business associate agreement; the grant becomes Active and delegates can sign in."><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-file-signature w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z" />
+  <path d="M14.487 7.858A1 1 0 0 1 14 7V2" />
+  <path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516" />
+  <path d="M8 18h1" />
+</svg>
+Mark BAA on file</a><a href="#eb-ref-edit" class="inline-flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Edit grant &mdash; Locations and expiry."><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-pencil w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+  <path d="m15 5 4 4" />
+</svg>
+</a><a href="#eb-ref-revoke" class="inline-flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:text-destructive hover:bg-destructive/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Revoke grant &mdash; opens a confirm."><svg
+  class="lucide lucide-ban w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M4.929 4.929 19.07 19.071" />
+</svg>
+</a></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">Keystone Revenue Group</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Revoked</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">On file<span class="block text-xs">Signed 11/04/2025</span></span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">Uptown Annex</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">Revoked 05/31/2026</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">Marcus Wexley</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-slate-600">&mdash;</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="text-xs text-slate-600" title="Revoked grants are kept for the record and have no actions.">No actions</span></td></tr></tbody>
+</table>
+      <p class="text-xs text-slate-600 mt-3 leading-relaxed">Shown as: <b class="text-slate-600">Org Admin/Owner</b> &mdash; every grant, tenant-wide. An Office Admin sees the grants for their own Location(s), read-only, with no actions.</p>
+  </div>
+</div>
+<div class="rounded-md border border-warning bg-warning/20 px-3 py-2 flex items-start gap-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-alert-triangle w-4 h-4 shrink-0 mt-0.5 text-warning-text"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+<div><p class="text-sm font-semibold text-warning-text">Apex Billing Solutions: delegates can&rsquo;t sign in until the BAA is on file.</p><p class="text-xs text-slate-700 mt-0.5 leading-relaxed">Use Mark BAA on file on its row once the signed agreement is in hand.</p></div></div>
+<div class="rounded-lg border border-slate-200 bg-white ">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Grant detail &mdash; External Biller User Roster (Meridian RCM Partners)</span>
+    <a href="#eb-ref-create" class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Create delegate staff &mdash; name and email; sends an invite. Works whether or not the grant is active yet."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-plus w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="M12 5v14" />
+</svg>
+Create delegate staff</a>
+  </div>
+  <div class="px-4 pb-4 max-h-56 overflow-y-auto" title="The roster scrolls on its own; the header and the grant list above stay in view.">
+<table class="w-full border-collapse -mx-1"><thead><tr><th class="text-left text-xs font-semibold text-slate-600 px-3 pt-4 pb-2 sticky top-0 bg-white z-10">Delegate Staff</th><th class="text-left text-xs font-semibold text-slate-600 px-3 pt-4 pb-2 sticky top-0 bg-white z-10">Status</th><th class="text-left text-xs font-semibold text-slate-600 px-3 pt-4 pb-2 sticky top-0 bg-white z-10">Added</th><th class="text-left text-xs font-semibold text-slate-600 px-3 pt-4 pb-2 sticky top-0 bg-white z-10">Removed</th><th class="text-left text-xs font-semibold text-slate-600 px-3 pt-4 pb-2 sticky top-0 bg-white z-10"></th></tr></thead><tbody><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-2"><span>Casey Lin</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Biller Delegate Owner</span></span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">06/01/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-owner" class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Reassign Biller Delegate Owner &mdash; pick another active delegate on this roster. Org Admin and Owner.">Reassign owner</a></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Dana Cho</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">07/15/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-disable" class="inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-white text-destructive hover:bg-destructive/10 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disable this delegate &mdash; opens a confirm. Signs them out and ends their access; the grant and everyone else are unaffected.">Disable</a></div></td></tr><tr class="border-t border-slate-100 text-slate-600"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Pat Ng</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Disabled</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">05/20/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">08/01/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Jordan Alvarez</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">08/03/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-disable" class="inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-white text-destructive hover:bg-destructive/10 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disable this delegate &mdash; opens a confirm. Signs them out and ends their access; the grant and everyone else are unaffected.">Disable</a></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Morgan Reyes</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">08/10/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-disable" class="inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-white text-destructive hover:bg-destructive/10 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disable this delegate &mdash; opens a confirm. Signs them out and ends their access; the grant and everyone else are unaffected.">Disable</a></div></td></tr><tr class="border-t border-slate-100 text-slate-600"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Taylor Kim</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Disabled</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">03/12/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">07/22/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Sam Patel</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Active</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">08/22/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-disable" class="inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-white text-destructive hover:bg-destructive/10 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disable this delegate &mdash; opens a confirm. Signs them out and ends their access; the grant and everyone else are unaffected.">Disable</a></div></td></tr><tr class="border-t border-slate-100"><td class="px-3 py-2.5 text-sm text-slate-700 align-top">Riley Chen</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><span class="inline-flex items-center gap-1 rounded-full border bg-info/50 text-info-text border-info px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Invited</span></td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">09/21/2026</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top">&mdash;</td><td class="px-3 py-2.5 text-sm text-slate-700 align-top"><div class="flex gap-1.5 justify-end"><a href="#eb-ref-resend" class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Resend invite &mdash; shown until they finish first sign-in; issues a new link.">Resend invite</a> <a href="#eb-ref-disable" class="inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-white text-destructive hover:bg-destructive/10 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disable this delegate.">Disable</a></div></td></tr></tbody></table>
+  </div>
+  <div class="px-4 py-3 border-t border-slate-100 space-y-1.5">
+    <p class="text-xs text-slate-600 leading-relaxed"><b class="text-slate-700">What delegates can do:</b> billing work (claims, payments, ledger) for this grant&rsquo;s Locations &mdash; they can create and change but never delete. Contacts: view only. SSN: always masked, never revealed.</p>
+    <p class="text-xs text-slate-600 leading-relaxed">Casey Lin, the Biller Delegate Owner, can also add and disable Meridian&rsquo;s delegates herself from <a href="my-billing-team.html" class="text-primary font-medium hover:underline">My Settings &rsaquo; My billing team</a>. Internal staff messaging for delegates arrives in Phase 2.</p>
+  </div>
+</div>
+      <details id="eb-refs" class="group scroll-mt-4" open>
+        <summary class="list-none cursor-pointer flex items-center gap-1.5 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600 [&::-webkit-details-marker]:hidden marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Dialogs, menus and states a static mockup can&rsquo;t show open. Each panel action above jumps to its card here. Click to collapse or expand.">
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-3.5 h-3.5 -rotate-90 group-open:rotate-0 transition-transform"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+Reference &mdash; dialogs and states (9)
+        </summary>
+        <p class="text-xs text-slate-600 mb-2 leading-relaxed">Each grant and roster action above jumps to its dialog here.</p><div class="columns-1 xl:columns-2 gap-3 mt-1">
+<div id="eb-ref-issue" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Issue grant</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Toolbar &rsaquo; + Issue grant</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Issue delegated access grant (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Issue delegated access grant</p><p class="text-xs text-slate-600 mt-0.5">For an outside billing company</p></div>
+        <div class="px-4 py-3 space-y-3"><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Billing company name <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="Apex Billing Solutions" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Locations <span class="text-destructive" aria-hidden="true">*</span></span><button type="button" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 text-slate-900 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-haspopup="listbox" title="Pick one or more Locations, or All Locations."><span>Downtown Office</span><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-4 h-4 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</button></div><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Grant expiry <span class="font-normal text-slate-600">(optional)</span></span><span class="relative block"><input type="text" readonly value="" placeholder="No expiry" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 pr-9" title="Optional. Access ends automatically on this date."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-calendar w-4 h-4 text-slate-600 absolute right-3 top-1/2 -translate-y-1/2"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</span></label><div class="rounded-md border border-info bg-info/10 px-3 py-2 flex items-start gap-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-info w-4 h-4 shrink-0 mt-0.5 text-info-text"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 16v-4" />
+  <path d="M12 8h.01" />
+</svg>
+<div><p class="text-sm font-semibold text-info-text">Delegates can&rsquo;t sign in until the BAA is on file.</p><p class="text-xs text-slate-700 mt-0.5 leading-relaxed">After issuing, use <b>Mark BAA on file</b> once the signed business associate agreement is in hand. You can add delegate staff before then.</p></div></div></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes the dialog; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Creates the grant (BAA pending). Org Admin and Owner only. Audit-logged.">Issue grant</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-baa" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Mark BAA on file</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Apex Billing Solutions</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Confirm a signed BAA with Apex Billing Solutions is on file (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Confirm a signed BAA with Apex Billing Solutions is on file</p></div>
+        <div class="px-4 py-3 space-y-3"><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Signed on <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="09/24/2026" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 pr-9"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-calendar w-4 h-4 text-slate-600 absolute right-3 top-1/2 -translate-y-1/2"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</span></label><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Attach signed BAA <span class="font-normal text-slate-600">(optional)</span></span><button type="button" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 text-slate-900 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-haspopup="listbox" title="Optional. Upload the signed copy or pick it from the Document Repository (administrative)."><span>Apex BAA 2026 (signed).pdf</span><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-4 h-4 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</button></div><p class="text-xs text-slate-600 leading-relaxed">Saving sets the BAA to On file, makes the grant Active and lets its delegates sign in. Audit-logged.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes the dialog; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Records the BAA as on file. Org Admin and Owner only.">Mark on file</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-edit" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Edit grant</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Row &rsaquo; Edit</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Edit grant &mdash; Meridian RCM Partners (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Edit grant &mdash; Meridian RCM Partners</p></div>
+        <div class="px-4 py-3 space-y-3"><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Locations <span class="text-destructive" aria-hidden="true">*</span></span><button type="button" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 text-slate-900 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-haspopup="listbox" title="Narrowing the Locations takes effect for every delegate at once."><span>All Locations</span><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-4 h-4 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</button></div><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Grant expiry <span class="font-normal text-slate-600">(optional)</span></span><span class="relative block"><input type="text" readonly value="12/31/2026" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 pr-9" title="Renew by moving this date. Clear it for no expiry."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-calendar w-4 h-4 text-slate-600 absolute right-3 top-1/2 -translate-y-1/2"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</span></label></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes the dialog; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Saves the Locations and expiry. Audit-logged.">Save</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-revoke" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Revoke grant</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Row &rsaquo; Revoke</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Revoke Meridian RCM Partners&rsquo; access? (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Revoke Meridian RCM Partners&rsquo; access?</p></div>
+        <div class="px-4 py-3 space-y-3"><p class="text-sm text-slate-700 leading-relaxed">All 6 current delegates are signed out and lose access now. Work they already posted stays. <b>This can&rsquo;t be undone</b> &mdash; to restore access, issue a new grant.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-destructive text-white text-xs font-semibold px-3 py-1.5 transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Revokes the grant and every delegate&rsquo;s access. Audit-logged.">Revoke grant</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-create" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Create delegate staff</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Grant detail &rsaquo; + Create delegate staff</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Create delegate staff (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Create delegate staff</p><p class="text-xs text-slate-600 mt-0.5">Meridian RCM Partners &middot; an invite email is sent</p></div>
+        <div class="px-4 py-3 space-y-3"><div class="grid grid-cols-2 gap-3"><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Full name <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="Riley Chen" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Email <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="riley.chen@meridianrcm.com" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" title="Their work email at the billing company; the invite goes here."></span></label></div><p class="text-xs text-slate-600 leading-relaxed">They get the External Biller role under this grant only, for its Locations. The invite link is good for 7 days.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes the dialog; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Creates the delegate&rsquo;s account and emails the invite. Audit-logged.">Create and invite</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-owner" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Reassign Biller Delegate Owner</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Roster &rsaquo; Reassign owner</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Biller Delegate Owner &mdash; Meridian RCM Partners (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Biller Delegate Owner &mdash; Meridian RCM Partners</p></div>
+        <div class="px-4 py-3 space-y-3"><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Delegate owner <span class="text-destructive" aria-hidden="true">*</span></span><button type="button" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 text-slate-900 flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-haspopup="listbox" title="Active delegates on this roster."><span>Dana Cho</span><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-4 h-4 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</button></div><p class="text-xs text-slate-600 leading-relaxed">The delegate owner can add and disable their company&rsquo;s own delegate staff from <a href="my-billing-team.html" class="text-primary font-medium hover:underline">My Settings &rsaquo; My billing team</a>. Casey Lin stays a delegate.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes the dialog; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Moves the owner flag. Audit-logged.">Save</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-no-owner" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Roster with no delegate owner yet</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Apex Billing Solutions</span>
+  </div>
+  <div class="p-4">
+<table class="w-full border-collapse text-sm"><tbody><tr class="border-t border-slate-100"><td class="px-2 py-2">Jamie Ortiz</td><td class="px-2 py-2"><span class="inline-flex items-center gap-1 rounded-full border bg-info/50 text-info-text border-info px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Invited</span></td><td class="px-2 py-2">09/22/2026</td><td class="px-2 py-2 text-right"><a href="#eb-ref-owner" class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Make this delegate the Biller Delegate Owner.">Make delegate owner</a></td></tr></tbody></table><p class="text-xs text-slate-600 mt-2 leading-relaxed">When a grant has no delegate owner, every delegate row offers <b>Make delegate owner</b>.</p>
+  </div>
+</div></div>
+<div id="eb-ref-disable" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Disable delegate</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Roster &rsaquo; Disable</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Disable Dana Cho? (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Disable Dana Cho?</p></div>
+        <div class="px-4 py-3 space-y-3"><p class="text-sm text-slate-700 leading-relaxed">She is signed out now and can&rsquo;t sign in again. Work she already posted stays. The grant and the other delegates are not affected.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-destructive text-white text-xs font-semibold px-3 py-1.5 transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Disables this delegate&rsquo;s account. Audit-logged.">Disable</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="eb-ref-resend" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Resend invite</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">No confirm &middot; toast</span>
+  </div>
+  <div class="p-4">
+<div class="inline-flex items-center gap-3 rounded-md bg-slate-900 text-white text-sm px-4 py-2.5 shadow-lg" role="status"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-circle-check w-4 h-4 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</svg>
+<span>New invite sent to riley.chen@meridianrcm.com</span></div>
+  </div>
+</div></div>
+        </div>
+      </details>
+</div>
+</div>
+        </div>
+      </div>
+      </div>
+    <div class="shrink-0 flex items-center gap-2 px-3 py-2 border-t border-slate-200 bg-white overflow-x-auto" title="Open-Files Strip / Patient Dock (patient-file.md) — one chip per open Patient File for this User; app-shell-level chrome, not scoped to any one screen." data-note="Patient Dock">
+        <div class="flex items-center gap-2 rounded-full bg-slate-100 border border-transparent hover:bg-slate-200 pl-1.5 pr-1 py-1 shrink-0 transition-colors">
+          <a href="patient-record.html" class="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Re-activate Diane Okafor&rsquo;s Patient File on its last-active tab (AC-02)."><img src="data:image/jpeg;base64,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" class="w-9 h-9 rounded-full object-cover shrink-0 border border-slate-200" alt="" aria-hidden="true" title="Avatar (components.md) — Photo variant, synthetic AI-generated face, no real person depicted"><span class="flex flex-col leading-tight"><span class="text-sm font-semibold text-slate-900">Okafor, D.</span><span class="text-xs text-slate-600">Patient Record</span></span></a>
+          <button class="flex items-center justify-center w-6 h-6 rounded-full text-slate-600 hover:bg-slate-300 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Close Okafor, D.&rsquo;s Patient File" aria-label="Close Okafor, D.&rsquo;s Patient File">
+            <!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-x w-3 h-3"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+
+          </button>
+        </div>        <div class="flex items-center gap-2 rounded-full bg-slate-100 border border-transparent hover:bg-slate-200 pl-1.5 pr-1 py-1 shrink-0 transition-colors">
+          <a href="patient-record-confidential-care.html" class="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Re-activate Elena Ruiz&rsquo;s Patient File on its last-active tab (AC-02)."><span class="flex items-center justify-center w-9 h-9 rounded-full bg-slate-200 text-slate-700 text-sm font-bold shrink-0" title="Avatar (components.md) — initials, `avatar` fill (slate-200/slate-700, ADR-641)" aria-hidden="true">ER</span><span class="flex flex-col leading-tight"><span class="text-sm font-semibold text-slate-900">Ruiz, E.</span><span class="text-xs text-slate-600">Patient Record</span></span></a>
+          <button class="flex items-center justify-center w-6 h-6 rounded-full text-slate-600 hover:bg-slate-300 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Close Ruiz, E.&rsquo;s Patient File" aria-label="Close Ruiz, E.&rsquo;s Patient File">
+            <!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-x w-3 h-3"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+
+          </button>
+        </div>        <div class="flex items-center gap-2 rounded-full bg-slate-100 border border-transparent hover:bg-slate-200 pl-1.5 pr-1 py-1 shrink-0 transition-colors">
+          <a href="clinical-history-viewer.html" class="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Re-activate M. Webb&rsquo;s Patient File on its last-active tab, Chart (AC-02). The corpus has no Webb sample, so this opens the representative Chart screen."><img src="data:image/jpeg;base64,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" class="w-9 h-9 rounded-full object-cover shrink-0 border border-slate-200" alt="" aria-hidden="true" title="Avatar (components.md) — Photo variant, synthetic AI-generated face, no real person depicted"><span class="flex flex-col leading-tight"><span class="text-sm font-semibold text-slate-900">Webb, M.</span><span class="text-xs text-slate-600">Chart</span></span></a>
+          <button class="flex items-center justify-center w-6 h-6 rounded-full text-slate-600 hover:bg-slate-300 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Close Webb, M.&rsquo;s Patient File" aria-label="Close Webb, M.&rsquo;s Patient File">
+            <!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-x w-3 h-3"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+
+          </button>
+        </div>
+    </div>
+    </div>
+    <aside class="psg-ac-toggle w-11 [&:has(#ac-toggle:checked)]:w-72 shrink-0 bg-white border-l border-slate-200 flex flex-col" aria-label="Action Center">
+      <input type="checkbox" id="ac-toggle" class="sr-only" aria-label="Expand or collapse Action Center">
+
+      <div class="hidden [.psg-ac-toggle:has(#ac-toggle:checked)_&]:flex [.psg-ac-toggle:has(#ac-toggle:checked)_&]:flex-col flex-1 min-h-0">
+        <div class="shrink-0 flex items-center justify-between gap-1 px-3.5 py-2.5 border-b border-slate-200">
+          <span class="text-sm font-bold text-slate-900">Action Center</span>
+          <span class="flex items-center gap-0.5">
+            <a href="new-task-dialog.html" class="flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="New task (int-29) &mdash; opens the New Task dialog. From this tab it starts with Queue: Front Desk, Assignee: Unassigned. Patient pre-fills from an open Visit Progress panel, else the open Patient File, else stays empty." aria-label="New task" aria-haspopup="dialog"><svg
+  class="lucide lucide-plus w-4 h-4"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="M12 5v14" />
+</svg>
+</a>
+            <a href="task-queue-detail.html#ac-filter-ref" class="relative flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Filter tasks (int-25) &mdash; opens the filter popover: Due, Assignment, Created on, Activity type, Patient, Patients scheduled on. Each choice applies at once; Clear resets. Narrows every queue tab and the active My Tasks sections, never Patient Flow or a queue&rsquo;s Resolved view (ADR-684). No Location control: the pane follows the Location selected in Global Nav (ADR-701); tenant-wide roles get a Location control instead." aria-label="Filter tasks" aria-haspopup="dialog" aria-expanded="false"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-list-filter w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 5h20" />
+  <path d="M6 12h12" />
+  <path d="M9 19h6" />
+</svg>
+</a>
+            <a href="operations-dashboard-front-desk.html" class="flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Operations Dashboard (int-33) &mdash; work in flight across modules, opened in the main panel on its Front Desk tab (ADR-697). On every tab; a tab with no dashboard tab of its own opens Front Desk." aria-label="Operations Dashboard"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-radar w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19.07 4.93A10 10 0 0 0 6.99 3.34" />
+  <path d="M4 6h.01" />
+  <path d="M2.29 9.62A10 10 0 1 0 21.31 8.35" />
+  <path d="M16.24 7.76A6 6 0 1 0 8.23 16.67" />
+  <path d="M12 18h.01" />
+  <path d="M17.99 11.66A6 6 0 0 1 15.77 16.67" />
+  <circle cx="12" cy="12" r="2" />
+  <path d="m13.41 10.59 5.66-5.66" />
+</svg>
+</a>
+            <a href="task-queue-detail.html" class="flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Action Center settings (int-12) &mdash; tab order and &ldquo;Keep expanded on smaller screens&rdquo;" aria-label="Action Center settings" aria-haspopup="dialog"><svg
+  class="lucide lucide-settings w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" />
+</svg>
+</a>
+            <label for="ac-toggle" role="button" tabindex="0" class="flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Collapse Action Center to its 44px rail" aria-label="Collapse Action Center" aria-expanded="true"><svg
+  class="lucide lucide-chevron-right w-4 h-4"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</label>
+          </span>
+        </div>
+
+        <div class="shrink-0 flex gap-1.5 px-3 py-2.5 border-b border-slate-200 bg-slate-50">
+          <a href="patient-flow.html" class="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-red-600 bg-white text-red-600 px-2 py-1 text-xs font-bold" title="9 &mdash; opens the Patient Flow tab (provider scope follows the tab&rsquo;s own picker, ADR-684 Decision 7). Red = one or more visits are outside this Location&rsquo;s time-based Patient Flow policy (ADR-618 policy signal, not error styling &mdash; Jay, 2026-09-15). Glyph removed 2026-09-21, Jay&rsquo;s own direction &mdash; color alone communicates status here, superseding the non-color-cue glyph ADR-641/SC 1.4.1 originally added.">
+            <svg
+  class="lucide lucide-activity w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+ Patient Flow 9<span class="sr-only">&mdash; out of policy</span>
+          </a>
+          <a href="unified-inbox.html" class="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-slate-300 bg-white text-slate-700 px-2 py-1 text-xs font-bold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Conversations &mdash; 4 open. Opens the Unified Inbox, unfiltered (int-08)">
+            <svg
+  class="lucide lucide-message-square w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+ Conversations 4
+          </a>
+        </div>
+
+        <style>
+.ac-tabs-more,.ac-tabs-less{opacity:0;visibility:hidden}
+.ac-tabs-scroll{scroll-padding-inline:2.5rem}
+.ac-tabs-scroll .ac-tab-current{scroll-initial-target:nearest;scroll-snap-align:end}
+@supports (animation-timeline: scroll()){
+.ac-tabs-wrap{timeline-scope:--ac-tabs}
+.ac-tabs-scroll{scroll-timeline:--ac-tabs x;scrollbar-width:none}
+.ac-tabs-scroll::-webkit-scrollbar{display:none}
+.ac-tabs-more{animation:pf-tabs-more linear both;animation-timeline:--ac-tabs}
+.ac-tabs-less{animation:pf-tabs-less linear both;animation-timeline:--ac-tabs}
+}
+@keyframes pf-tabs-more{0%,96%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@keyframes pf-tabs-less{0%{opacity:0;visibility:hidden}4%,100%{opacity:1;visibility:visible}}
+</style><div class="ac-tabs-wrap shrink-0 relative border-b border-slate-200">
+        <div class="psg-ac-tabs ac-tabs-scroll flex gap-0 px-1 overflow-x-auto" role="navigation" aria-label="Action Center queues" data-note="Scrolls horizontally when the tabs don&rsquo;t fit the pane (e.g. an ephemeral tab is open): edge fade + chevron, same affordance as the Patient File tab bar; the active tab starts in view.">
+<span id="ac-tabs-first" class="shrink-0 w-px" aria-hidden="true"></span>
+<input type="radio" name="ac-tabs" id="ac-tab-mytasks" class="sr-only" aria-label="My Tasks">
+<label for="ac-tab-mytasks" class="contents"><a href="my-tasks-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-mytasks:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-mytasks:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-mytasks:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-mytasks:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="My Tasks — opens my-tasks-queue.html" aria-label="My Tasks"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-list-checks w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-mytasks:checked)_&]:inline">My Tasks</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-frontdesk" class="sr-only" checked aria-label="Front Desk">
+<label for="ac-tab-frontdesk" class="contents"><a href="front-desk-queue.html" aria-current="page" class="ac-tab-current flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-frontdesk:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-frontdesk:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-frontdesk:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-frontdesk:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Front Desk — opens front-desk-queue.html" aria-label="Front Desk"><svg
+  class="lucide lucide-concierge-bell w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 20a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1Z" />
+  <path d="M20 16a8 8 0 1 0-16 0" />
+  <path d="M12 4v4" />
+  <path d="M10 4h4" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-frontdesk:checked)_&]:inline">Front Desk</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-biller" class="sr-only" aria-label="Biller">
+<label for="ac-tab-biller" class="contents"><a href="biller-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-biller:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-biller:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-biller:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-biller:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Biller — opens biller-queue.html" aria-label="Biller"><svg
+  class="lucide lucide-banknote w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="12" x="2" y="6" rx="2" />
+  <circle cx="12" cy="12" r="2" />
+  <path d="M6 12h.01M18 12h.01" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-biller:checked)_&]:inline">Biller</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-provider" class="sr-only" aria-label="Clinical">
+<label for="ac-tab-provider" class="contents"><a href="clinical-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-provider:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-provider:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-provider:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-provider:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Clinical — opens clinical-queue.html" aria-label="Clinical"><svg
+  class="lucide lucide-stethoscope w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 2v2" />
+  <path d="M5 2v2" />
+  <path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1" />
+  <path d="M8 15a6 6 0 0 0 12 0v-3" />
+  <circle cx="20" cy="10" r="2" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-provider:checked)_&]:inline">Clinical</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-patientflow" class="sr-only" aria-label="Patient Flow">
+<label for="ac-tab-patientflow" class="contents"><a href="patient-flow.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-patientflow:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-patientflow:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-patientflow:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-patientflow:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Patient Flow — opens patient-flow.html" aria-label="Patient Flow"><svg
+  class="lucide lucide-activity w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-patientflow:checked)_&]:inline">Patient Flow</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-compliance" class="sr-only" aria-label="Compliance">
+<label for="ac-tab-compliance" class="contents"><a href="compliance-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-compliance:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-compliance:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-compliance:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-compliance:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Compliance — opens compliance-queue.html" aria-label="Compliance"><svg
+  class="lucide lucide-scale w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-compliance:checked)_&]:inline">Compliance</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-officeadmin" class="sr-only" aria-label="Office Admin">
+<label for="ac-tab-officeadmin" class="contents"><a href="office-admin-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-officeadmin:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-officeadmin:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-officeadmin:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-officeadmin:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Office Admin — opens office-admin-queue.html" aria-label="Office Admin"><svg
+  class="lucide lucide-briefcase w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  <rect width="20" height="14" x="2" y="6" rx="2" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-officeadmin:checked)_&]:inline">Office Admin</span></a></label>
+<input type="radio" name="ac-tabs" id="ac-tab-orgadmin" class="sr-only" aria-label="Org Admin">
+<label for="ac-tab-orgadmin" class="contents"><a href="org-admin-queue.html" class="flex items-center justify-center gap-1 shrink-0 whitespace-nowrap px-[5px] py-2 min-w-6 min-h-6 border-b-2 border-transparent -mb-px text-slate-600 cursor-pointer hover:text-slate-900 hover:border-slate-300 [.psg-ac-tabs:has(#ac-tab-orgadmin:checked)_&]:justify-start [.psg-ac-tabs:has(#ac-tab-orgadmin:checked)_&]:border-blue-600 [.psg-ac-tabs:has(#ac-tab-orgadmin:checked)_&]:text-slate-900 [.psg-ac-tabs:has(#ac-tab-orgadmin:checked)_&]:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Org Admin — opens org-admin-queue.html" aria-label="Org Admin"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-building-2 w-3.5 h-3.5 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+  
+  
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 12h4" />
+  <path d="M10 8h4" />
+  <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+  <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+  <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+</svg>
+<span class="hidden [.psg-ac-tabs:has(#ac-tab-orgadmin:checked)_&]:inline">Org Admin</span></a></label>
+<span id="ac-tabs-last" class="shrink-0 w-px" aria-hidden="true"></span>
+        </div>
+        <a href="#ac-tabs-first" class="ac-tabs-less absolute bottom-0 top-0 z-10 flex items-center w-10 text-slate-600 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2  left-0 justify-start pl-0.5 bg-gradient-to-r from-white from-40% to-transparent" title="Earlier queues &mdash; scrolls the tab row back to the start."><span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-white border border-slate-200 shadow-sm"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-chevron-left w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+</span><span class="sr-only">Earlier queues</span></a><a href="#ac-tabs-last" class="ac-tabs-more absolute bottom-0 top-0 z-10 flex items-center w-10 text-slate-600 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2  right-0 justify-end pr-0.5 bg-gradient-to-l from-white from-40% to-transparent" title="More queues &mdash; scrolls the tab row to the end. Shown only when the tabs don&rsquo;t fit the pane; Shift + scroll or swipe also scrolls it."><span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-white border border-slate-200 shadow-sm"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span><span class="sr-only">More queues</span></a>
+        </div>
+
+        <div class="flex-1 min-h-0 flex items-center justify-center p-5">
+        <p class="text-xs text-slate-600 text-center leading-relaxed">
+          Action Center is persistent, cross-module shell chrome — unaffected by which Admin Shell rail group is open.
+          Shown in its default idle state.
+        </p>
+        </div>
+
+        <div class="shrink-0 border-t border-slate-200 relative" data-note="ac-bottom (ADR-640) &mdash; Footer Notification slot (ADR-594, transient; not shown at rest) above the Help &amp; Support Launcher (ADR-495). Replaces ADR-617&rsquo;s floating pill + safe zone. Renders regardless of Action Center grant; survives the lg collapse; never a reorderable tab.">
+          <div class="absolute inset-x-0 bottom-full pointer-events-none" data-note="Action Center Footer Notification slot (ADR-594) &mdash; overlays upward onto ac-body while a notification is visible; empty at rest."></div>
+
+        <a href="help-support-widget.html" class="flex w-full min-h-[44px] items-center gap-2 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-expanded="false" aria-haspopup="dialog" title="Help &amp; Support Launcher (help-support-widget.md, ADR-495; relocated into ac-bottom by ADR-640) &mdash; opens the panel selector as a flyout anchored here, extending leftward from the Action Center&rsquo;s edge; never covers the pane (drawn open on help-support-widget.html). Non-modal disclosure: focus moves into the flyout on open, Escape/Close returns it here, click-outside closes.">
+          <svg
+  class="lucide lucide-help-circle w-4 h-4 text-slate-500 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+  <path d="M12 17h.01" />
+</svg>
+
+          Help
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-up w-3.5 h-3.5 ml-auto text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m18 15-6-6-6 6" />
+</svg>
+
+        </a>
+        </div>
+      </div>
+
+      <div class="flex [.psg-ac-toggle:has(#ac-toggle:checked)_&]:hidden flex-col flex-1 min-h-0 items-center">
+        <div class="shrink-0 py-2.5">
+          <label for="ac-toggle" role="button" tabindex="0" class="flex items-center justify-center w-6 h-6 rounded-md text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Expand Action Center" aria-label="Expand Action Center" aria-expanded="false"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-chevron-left w-4 h-4"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+</label>
+        </div>
+        <div class="flex-1 min-h-0 flex flex-col items-center gap-1.5 py-1.5" title="Indicator Panel (collapsed, ADR-644) — same two indicators as expanded, icon + count only">
+        <a href="patient-flow.html" class="relative flex items-center justify-center w-8 h-8 rounded-md hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Patient Flow — 9, one or more out of policy (ADR-678: no Patient Flow work in the rail &mdash; clicking expands the pane onto the Patient Flow tab)" aria-label="Patient Flow, 9, one or more out of policy">
+          <svg
+  class="lucide lucide-activity w-4 h-4 text-red-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+
+          <span class="absolute -top-1 -right-1 inline-flex items-center justify-center min-w-[1.05rem] h-4 px-1 rounded-full bg-red-600 text-white text-2xs font-bold">9</span>
+        </a>
+        <a href="unified-inbox.html" class="relative flex items-center justify-center w-8 h-8 rounded-md hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Conversations — 4 open. Opens the Unified Inbox, unfiltered (int-08)" aria-label="Conversations, 4">
+          <svg
+  class="lucide lucide-message-square w-4 h-4 text-slate-600"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+
+          <span class="absolute -top-1 -right-1 inline-flex items-center justify-center min-w-[1.05rem] h-4 px-1 rounded-full bg-slate-200 text-slate-900 text-2xs font-semibold">4</span>
+        </a>
+        </div>
+        <div class="relative shrink-0 border-t border-slate-200 w-full flex flex-col items-center" data-note="ac-bottom (ADR-640), collapsed rail (ADR-644)">
+
+        <a href="help-support-widget.html" class="flex items-center justify-center w-11 h-11 text-slate-600 hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Help &amp; Support Launcher (help-support-widget.md, ADR-495/640) &mdash; collapsed rail icon form (ADR-640 Decision 2). Opens the panel selector as a flyout (drawn open on help-support-widget.html)." aria-label="Help &amp; Support" aria-haspopup="dialog" aria-expanded="false">
+          <svg
+  class="lucide lucide-help-circle w-4 h-4"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+  <path d="M12 17h.01" />
+</svg>
+
+        </a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+</body>
+</html>
