@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSG Mockup (Styled) &mdash; Practice Signup &amp; Onboarding Wizard</title>
+<link rel="stylesheet" href="_shared/styled.css">
+</head>
+<body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
+<div class="h-full flex flex-col">
+  <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
+    <b>STYLED MOCKUP &mdash; Wave 2 batch, TENANT-ONBOARDING &mdash; Practice Signup &amp; Onboarding Wizard (<code>practice-signup-onboarding-wizard.md</code>).</b> No persistent app-shell chrome pre-authentication (login.md &sect;6) &mdash; this corpus&rsquo;s own <code>page_preauth()</code>/<code>preauth_card()</code> shape, first proven on Login, reused here at a wider card width for this screen&rsquo;s heavier per-step content. <a class="underline" href="index.html">&larr; Forward to Schedule Calendar (default post-login landing, every Role, ADR-519)</a>  <b>2026-10-07 (subsidiary guide decisions &mdash; D5):</b> reference cards add the <b>No-trial signup</b> variant (plan, payment method, Create account and subscribe) and <b>Step 1b &mdash; Add a payment method to start</b>.  <b>2026-10-07 (subsidiary guide follow-ups &mdash; F3):</b> new reference card <b>Step 1b &mdash; Your payment didn&rsquo;t go through</b> (first charge failed after a no-trial signup).  <b>2026-10-29 (obligation sweep Batch F NFR-002 MFA floor &mdash; decided by Jay):</b> new reference card <b>Step 1c &mdash; Pair your phone</b> (the floor applies from the Owner&rsquo;s first sign-in). <b>2026-10-29 &mdash; clinic setup and onboarding (multi-discipline stress test: Recommendation 0, C17, O5)</b>: Account setup opens with a one-line clinic help whose Learn more opens an in-app &ldquo;Setting up your clinics&rdquo; popover (drawn under Reference); a Clinical View Scope step for a sales-led or resumed Owner comes before Account Setup (Owner only, reference card); the Readiness Gate gains &ldquo;Confirm settings your disciplines suggest differently&rdquo;, which opens the Settings your disciplines suggest differently dialog (drawn under Reference; Owner only).
+  </div>
+  <div class="flex-1 min-h-0 flex items-center justify-center bg-slate-50 p-6 overflow-y-auto">
+<div class="self-start w-full flex justify-center">    <div class="w-full max-w-2xl rounded-xl border border-slate-200 bg-white shadow-sm p-7 my-6">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="text-slate-900 font-bold text-lg tracking-wide">PSG</span>
+      </div>
+      <h1 class="text-lg font-bold text-slate-900 mb-1">Create my practice</h1>
+      <p class="text-xs text-slate-600 mb-5">Workflow &middot; TENANT-ONBOARDING-WIZARD-SCREEN &middot; Present</p>
+
+      <div class="space-y-1">
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Practice name</label>
+          <input disabled placeholder="e.g. Cornerstone Chiropractic" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Your name</label>
+          <input disabled placeholder="Owner&rsquo;s full name" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Your email</label>
+          <input disabled placeholder="owner@practice.com" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Mobile phone for account notices (optional)</label>
+          <input disabled placeholder="(555) 000-0000" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+      </div>
+      <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 w-full mt-1 justify-center">Create my practice</button>
+      <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">Subsidiary resolved from this signup subdomain (never an explicit picker, ADR-304 Decision 6) &mdash; not a field. On submit, the Core Tenant Creation Transaction (TENANT-ONBOARDING-E01-S01) runs as one atomic, all-or-nothing operation: Tenant + default Brand + default Location + Owner User + this Tenant Onboarding row (status=<span title="account_setup">account setup</span>) are created together; Location timezone resolves from signup-IP geolocation (falls back to America/New_York on failure, not user-facing); the initial Discipline Registration is triggered in the background (never written directly here). <span title="subscription_status">subscription status</span> is set unconditionally to trial (ADR-304 Decision 8/ADR-017) &mdash; no bypass to active, any creation path. Failure: no partial creation ever observable &mdash; inline error, stays at this step to retry.</p>
+      <div class="mt-5 pt-4 border-t border-slate-100">
+        <p class="text-xs font-bold uppercase tracking-wide text-slate-600 mb-3">Setup wizard</p>
+        <nav aria-label="Setup progress" class="rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 mb-4"><ol class="hidden md:flex flex-wrap items-center gap-0.5"><li><a href="#wiz-step-2" class="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Reopen Account setup for editing. Your later steps keep what you entered."><span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500 text-slate-950 shrink-0"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3 h-3"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+</span>Account setup</a></li><li aria-hidden="true" class="text-slate-300"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</li><li aria-current="step"><span class="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold text-slate-900 bg-primary/10 ring-1 ring-primary/40"><span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-2xs font-bold shrink-0">3</span>Services &amp; providers</span></li><li aria-hidden="true" class="text-slate-300"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</li><li><span class="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-600 cursor-default" title="Opens once the steps before it are saved."><span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-slate-300 text-2xs font-bold shrink-0">4</span>Billing</span></li><li aria-hidden="true" class="text-slate-300"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</li><li><span class="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-600 cursor-default" title="Opens once the steps before it are saved."><span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-slate-300 text-2xs font-bold shrink-0">4a</span>Texting <span class="font-normal text-slate-600">(optional)</span></span></li><li aria-hidden="true" class="text-slate-300"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</li><li><span class="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-600 cursor-default" title="Opens once the steps before it are saved."><span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-slate-300 text-2xs font-bold shrink-0">5</span>Readiness</span></li><li aria-hidden="true" class="text-slate-300"><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-right w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</li><li><span class="flex items-center gap-1.5 px-2 py-1 text-xs text-slate-600 cursor-default" title="Opens once the steps before it are saved."><span class="inline-flex items-center justify-center w-5 h-5 rounded-full border border-slate-300 text-2xs font-bold shrink-0">6</span>Go live</span></li></ol><p class="md:hidden text-xs font-semibold text-slate-700 px-1">Step 2 of 6 &middot; Services &amp; providers</p></nav>
+        <p class="text-xs text-slate-600 mb-3 leading-relaxed">Covers the single-discipline, subdomain-resolved entry path and every downstream step every creation path shares &mdash; the Multi-Discipline Marketplace&rsquo;s own entry (<a class="text-blue-600 font-medium underline underline-offset-2" href="multi-discipline-marketplace-signup.html">multi-discipline-marketplace-signup.html</a>) rejoins at Account setup. Shown on Services &amp; providers; completed steps reopen from the progress bar.</p>
+<div class="px-1">      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-500 text-slate-950 shrink-0"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-600">Self-serve signup</span>
+          <p class="text-xs text-slate-600 mt-0.5">Shown expanded, above &mdash; the actual pre-authentication entry surface (TENANT-ONBOARDING-E02-S01). On success it is replaced by <a class="text-primary underline" href="#wiz-ref-check-email">Check your email</a>; the emailed link opens <a class="text-primary underline" href="#wiz-ref-set-password">Set your password</a>, then Account setup. When this signup offers no trial, the form also asks for a plan and a payment method (<a class="text-primary underline" href="#wiz-ref-no-trial">No-trial signup</a>); an account a salesperson set up with no trial opens on <a class="text-primary underline" href="#wiz-ref-payment-start">Add a payment method to start</a>; a no-trial signup whose first charge failed opens on <a class="text-primary underline" href="#wiz-ref-payment-failed">Your payment didn&rsquo;t go through</a>.</p>
+          
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-500 text-slate-950 shrink-0"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3.5 h-3.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-600"><span id="wiz-step-2" class="block scroll-mt-4"></span>Account Setup</span>
+          <p class="text-xs text-slate-600 mt-0.5">Becomes visible at status=<span title="account_setup">account setup</span>. Tax ID/NPI are format-validated if entered here but not yet required (deferred to Step 4, ADR-304 Decision 4) &mdash; the Owner may leave them blank and still advance. Saved with <b>Save &amp; continue</b>; a failed save shows inline and stays on the step.</p>
+          <div class="mt-2 mb-2 rounded-md border border-info bg-info/10 px-3 py-2 flex items-start gap-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-info w-4 h-4 shrink-0 mt-0.5 text-info-text"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 16v-4" />
+  <path d="M12 8h.01" />
+</svg>
+<p class="text-xs text-slate-700 leading-relaxed">A location is one clinic: the rooms, providers and staff who book and check patients in together. Two clinics in one building are two locations. <a href="#clinic-help-ref" class="font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-haspopup="dialog" title="Learn more (int-04) &mdash; opens the Setting up your clinics popover, drawn under Reference. It is in the app: no new tab, nothing is saved, and you keep your place.">Learn more</a></p></div>
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-slate-200 text-slate-700 text-xs font-bold shrink-0">3</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-900 font-semibold"><span id="wiz-step-3" class="block scroll-mt-4"></span>Services / Providers Configuration</span>
+          <p class="text-xs text-slate-600 mt-0.5">Two independently-tracked completions (Workflow 5, TENANT-ONBOARDING-E05-S02), read by the Readiness Gate below as separate booleans &mdash; no stated ordering between them.</p>
+          <div class="mt-2 space-y-2"><div class="rounded-md border border-slate-200 bg-white px-3 py-2.5"><div class="flex items-center justify-between gap-2 flex-wrap"><span class="text-sm font-semibold text-slate-900">Services &amp; fees</span><span class="inline-flex items-center gap-1 rounded-full border bg-[#E6FBEF] text-success-text border-success px-2 py-0.5 text-2xs font-semibold whitespace-nowrap"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-check w-3 h-3"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg>
+Done</span></div><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Done once the practice has at least one active appointment type and one active fee schedule. 4 appointment types and the Standard fee schedule are set up.</p><div class="flex flex-wrap gap-2 mt-2"><a href="appointment-types.html" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens Admin &rsaquo; Practice Setup &rsaquo; Appointment Types. Come back here when you&rsquo;re done; this row updates by itself.">Set up appointment types<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-arrow-right w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</a><a href="ledger-settings.html#ls-fee-entries" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens Ledger Settings at the fee schedule. This row updates by itself.">Set up fee schedule<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-arrow-right w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</a></div></div><div class="rounded-md border border-slate-200 bg-white px-3 py-2.5"><div class="flex items-center justify-between gap-2 flex-wrap"><span class="text-sm font-semibold text-slate-900">Providers</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Not started</span></div><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Done once at least one active provider exists. No providers added yet.</p><div class="flex flex-wrap gap-2 mt-2"><a href="staff-user-management.html" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens Staff / User Management: + Add user creates the person, then Designate as provider.">Add a staff user<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-arrow-right w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</a><a href="provider-record.html" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens Provider Record&rsquo;s Identity &amp; Credentialing panel.">Provider Record<svg aria-hidden="true" focusable="false"
+  class="lucide lucide-arrow-right w-3.5 h-3.5 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+</a></div></div></div><p class="text-xs text-slate-600 mt-2 leading-relaxed">Services and providers are tracked separately and can be done in either order. This wizard has no provider form of its own: Staff / User Management&rsquo;s + Add user creates the person, and its Designate as provider action opens Provider Record.</p><div class="flex items-center justify-between gap-2 mt-3 pt-2.5 border-t border-slate-100"><a href="#wiz-step-2" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Back &mdash; returns to the previous step. What you entered here is kept.">Back</a><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Save &amp; continue &mdash; moves on to Billing. You can continue with providers still not started; the Readiness step lists what&rsquo;s left.">Save &amp; continue</button></div>
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full border border-slate-300 text-slate-600 text-xs font-bold shrink-0">4</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-600"><span id="wiz-step-4" class="block scroll-mt-4"></span>Billing Configuration</span>
+          <p class="text-xs text-slate-600 mt-0.5">Payer contracts, a clearinghouse activation request (2026-10-15, ADR-716: PSG holds the clearinghouse account, so no credentials are entered), and billing entity setup for the practice's own revenue-cycle billing &mdash; distinct from the practice&rsquo;s own PSG subscription, which lives on <a class="text-primary underline" href="subscription-billing-console.html">Subscription &amp; Billing</a> (Owner). Tax ID presence is now validated and blocking-capable (deferred from Step 2, ADR-304 Decision 4); the NPI is optional (2026-10-08, stress test C1).</p>
+          <div class="mt-2 grid grid-cols-2 gap-2.5">
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Tax ID</label>
+          <input disabled placeholder="XX-XXXXXXX" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+<div class="mb-3">
+          <label class="text-xs font-semibold text-slate-600 mb-1 block">Group NPI (optional)</label>
+          <input disabled placeholder="10-digit NPI" class="w-full px-3 py-2 rounded-md border border-slate-300 text-sm text-slate-700 placeholder:text-slate-600 bg-white" />
+        </div>
+      </div>
+      <p class="text-xs text-slate-600 mb-2 leading-relaxed">Saved as your practice&rsquo;s billing entity &mdash; you can change it, or add another legal entity, on <a class="text-blue-600 font-medium underline underline-offset-2" href="locations.html">Locations</a>. Leave the NPI blank if your providers bill individually.</p>
+      <div class="mb-1"><label class="inline-flex items-center gap-2 text-sm text-slate-700 cursor-default" title="Tenant.bills_insurance, default true (ADR-525) -- a practice-level self-declared fact, never inferred from Discipline. Setting this suppresses the Readiness Gate's billing warning. Can be changed later with the This practice bills insurance switch in Insurance Settings."><input type="checkbox" disabled class="rounded border-slate-300">This practice does not bill insurance</label></div>
+      <div class="rounded-md border border-slate-200 bg-slate-50/60 px-3 py-2.5 my-2">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0"><p class="text-sm font-semibold text-slate-900">Claims submission</p>
+          <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">PSG holds the clearinghouse account (Claim.MD). Request activation and PSG enrolls your billing entity &mdash; you never enter a submitter ID or credential.</p></div>
+          <button class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap shrink-0" title="Request activation (integrations.md Workflow 2b, 2026-10-15, ADR-716) &mdash; records the request for the default billing entity and opens a PSG setup case. This step completes on the request; enrollment can take a few weeks. Refused with &lsquo;This service isn&rsquo;t available yet &mdash; contact PSG support&rsquo; if PSG has no active agreement with the vendor.">Request activation</button>
+        </div>
+        <p class="text-xs mt-2 flex flex-wrap items-center gap-1.5"><span class="inline-flex items-center gap-1 rounded-full border bg-warning/50 text-warning-text border-warning px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Claims activation pending</span><span class="text-slate-600">Shown after you request, here and on the Readiness Gate: PSG is setting this up. It clears when PSG records your submitter ID; signatures PSG needs from you arrive as Action Center tasks.</span></p>
+      </div>
+      <p class="text-xs text-slate-600 mt-1 leading-relaxed">Clearinghouse activation is the same request as on <a class="text-blue-600 font-medium underline underline-offset-2" href="integration-connections.html">Integration Connections</a> (2026-10-15: Request activation replaces the earlier credential hand-off). Payer contracts hand off to <a class="text-blue-600 font-medium underline underline-offset-2" href="carrier-plan-registry.html">Carrier &amp; Plan Registry &rarr;</a>. Cash-pay later switching to insurance: the <a class="text-blue-600 font-medium underline underline-offset-2" href="insurance-settings.html#ins-bills-insurance">This practice bills insurance</a> switch in Insurance Settings. A submitted tax ID matching an existing Tenant's raises a non-blocking duplicate flag to platform/support staff only (AC-07) &mdash; no Tenant-side Role, including Owner, ever sees this signal; the <span title="billing_configured">billing configured</span> transition still succeeds transparently.</p>
+      <div class="flex items-center justify-between gap-2 mt-3 pt-2.5 border-t border-slate-100"><a href="#wiz-step-3" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Back &mdash; returns to the previous step. What you entered here is kept.">Back</a><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Save &amp; continue &mdash; saves the tax ID, NPI, the activation request and the insurance answer, then moves on to Texting. A missing tax ID shows inline and keeps you here; the NPI is optional.">Save &amp; continue</button></div>
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full border border-slate-300 text-slate-600 text-xs font-bold shrink-0">4a</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-600"><span id="wiz-step-4a" class="block scroll-mt-4"></span>Texting (optional)</span>
+          <p class="text-xs text-slate-600 mt-0.5">Start with a new number now, bring your own later. Email already works from the platform address. Skipping never blocks go-live. Ships with Conversations &mdash; until that&rsquo;s live, this step and the Readiness Gate&rsquo;s texting reminder are left out.</p>
+          <div class="mt-2"><div class="grid grid-cols-1 sm:grid-cols-3 gap-2"><button class="text-left rounded-lg border border-slate-200 bg-white hover:border-primary hover:bg-primary/5 px-3 py-2.5 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens the Add number steps with &lsquo;Get a new number&rsquo; chosen."><span class="flex items-center gap-2 text-sm font-semibold text-slate-900"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-sparkles w-4 h-4 text-primary"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" />
+</svg>
+Get a new number</span><span class="block text-xs text-slate-700 mt-1 leading-relaxed">A new local number for texts and calls.</span><span class="block text-xs text-slate-600 mt-1">Ready in about 1&ndash;3 business days, after carrier registration.</span></button><button class="text-left rounded-lg border border-slate-200 bg-white hover:border-primary hover:bg-primary/5 px-3 py-2.5 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens the Add number steps with &lsquo;Text-enable my existing number&rsquo; chosen."><span class="flex items-center gap-2 text-sm font-semibold text-slate-900"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-smartphone w-4 h-4 text-primary"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+  <path d="M12 18h.01" />
+</svg>
+Text-enable my existing number</span><span class="block text-xs text-slate-700 mt-1 leading-relaxed">Patients text the number they already know. Calls stay with your current phone provider.</span><span class="block text-xs text-slate-600 mt-1">About 1&ndash;2 weeks. Needs a signed letter of authorization.</span></button><button class="text-left rounded-lg border border-slate-200 bg-white hover:border-primary hover:bg-primary/5 px-3 py-2.5 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens the Add number steps with &lsquo;Move my number to PSG&rsquo; chosen."><span class="flex items-center gap-2 text-sm font-semibold text-slate-900"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-right-left w-4 h-4 text-primary"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m16 3 4 4-4 4" />
+  <path d="M20 7H4" />
+  <path d="m8 21-4-4 4-4" />
+  <path d="M4 17h16" />
+</svg>
+Move my number to PSG</span><span class="block text-xs text-slate-700 mt-1 leading-relaxed">Texts and calls both move to PSG.</span><span class="block text-xs text-slate-600 mt-1">About 2&ndash;4 weeks. A temporary number can cover you meanwhile.</span></button></div></div>
+      <div class="flex items-center gap-3 mt-2.5"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap shrink-0" title="Skip &mdash; moves on to the Readiness Gate, which then shows a &lsquo;Patients can&rsquo;t get texts yet&rsquo; reminder. Nothing is lost.">Skip for now</button>
+      <span class="text-xs text-slate-600">Choosing an option opens the Add number steps here, then the business registration US carriers require. After go-live it&rsquo;s all on <a class="text-blue-600 font-medium underline underline-offset-2" href="messaging-channels.html">Messaging Channels</a>.</span></div>
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full border border-slate-300 text-slate-600 text-xs font-bold shrink-0">5</span>
+          <span class="w-px flex-1 bg-slate-200 my-1"></span>
+        </div>
+        <div class="flex-1 min-w-0 pb-4">
+          <span class="text-sm text-slate-600"><span id="wiz-step-5" class="block scroll-mt-4"></span>Readiness Gate</span>
+          <p class="text-xs text-slate-600 mt-0.5">Re-entrant (Workflow 7, TENANT-ONBOARDING-E06-S01) &mdash; re-runs automatically whenever <span title="services_configured">services configured</span>, <span title="providers_added">providers added</span>, or <span title="billing_configured">billing configured</span> changes, not only once. Shown here: <span title="services_configured">services configured</span> = true, <span title="providers_added">providers added</span> = true, <span title="bills_insurance">bills insurance</span> = true, <span title="billing_configured">billing configured</span> = false &mdash; status &rarr; <span title="ready_for_go_live">ready for go live</span>, transition itself NOT blocked (AC-03).</p>
+          <div class="mt-2 rounded-lg border border-warning bg-warning/10 px-3.5 py-3">
+        <div class="flex items-start gap-2">
+          <!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-alert-triangle w-4 h-4 text-warning-text shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-warning-text">Billing is not configured yet.</p>
+            <p class="text-xs text-slate-600 mt-0.5">You can go live anyway &mdash; this will not block you. <span class="text-slate-600">(AC-03, warn-not-block, first real use of the dismissible Inline Alert/Banner ADR-525 was built for)</span></p>
+            <div class="flex gap-2 flex-wrap mt-2.5">
+              <button class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Session-scoped (int-03) &mdash; reappears next session while billing_configured is still false and bills_insurance is still true. Does not affect status or block Go-Live either way.">Remind me later</button>
+              <button class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Writes Tenant.bills_insurance = false directly (ADR-525) &mdash; clears this banner immediately since the condition becomes moot, not merely hidden.">This practice does not bill insurance</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-slate-600 mt-2 leading-relaxed">Persists past go-live too, per ADR-525 &mdash; this same banner also renders on Schedule Calendar, Integration Connections, and Carrier &amp; Plan Registry until <span title="billing_configured">billing configured</span> becomes true or <span title="bills_insurance">bills insurance</span> is declared false.</p><div class="mt-3 rounded-lg border border-slate-200 bg-white px-3.5 py-3">
+        <div class="flex items-start gap-2">
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-message-square w-4 h-4 text-slate-600 shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <p class="text-sm font-semibold text-slate-900">Patients can&rsquo;t get texts yet</p>
+              <span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Doesn&rsquo;t block go-live</span>
+            </div>
+            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Reminders and replies go by email until a texting number is set up. You can do it now or any time after go-live.</p>
+            <a href="messaging-channels.html" class="inline-flex mt-2 text-xs font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Opens Messaging Channels (Admin &rsaquo; Integrations).">Set up texting &rarr;</a>
+          </div>
+        </div>
+      </div><div class="mt-3 rounded-lg border border-slate-200 bg-white px-3.5 py-3">
+        <div class="flex items-start gap-2">
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-scale w-4 h-4 text-slate-600 shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 3v18" />
+  <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
+  <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
+  <path d="M7 21h10" />
+</svg>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <p class="text-sm font-semibold text-slate-900">Patient credit rules for your states</p>
+              <span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap" title="Doesn&rsquo;t block go-live.">Recommended</span>
+            </div>
+            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">When a patient overpays, these state rules decide how fast a refund is due and whether a credit can stay on account. PSG maintains them; confirm they match your understanding.</p>
+            <table class="w-full mt-2">
+              <thead><tr><th class="text-left text-2xs font-semibold uppercase tracking-wide text-slate-600 pb-1">State</th><th class="text-left text-2xs font-semibold uppercase tracking-wide text-slate-600 pb-1">Refund deadline</th><th class="text-left text-2xs font-semibold uppercase tracking-wide text-slate-600 pb-1">Hold on account</th><th class="text-left text-2xs font-semibold uppercase tracking-wide text-slate-600 pb-1">Source</th></tr></thead>
+              <tbody><tr class="border-t border-slate-100"><td class="py-1.5 pr-3 text-sm font-medium text-slate-900 align-top">Illinois</td><td class="py-1.5 pr-3 text-xs text-slate-700 align-top">No state deadline</td><td class="py-1.5 pr-3 text-xs text-slate-700 align-top">Allowed with patient consent</td><td class="py-1.5 text-xs text-slate-600 align-top">No specific state rule found; under review</td></tr></tbody>
+            </table>
+            <div class="flex items-center gap-2 flex-wrap mt-2.5">
+              <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Confirm (Owner, Org Admin or Office Admin) &mdash; records who confirmed and when; the card then shows as done. The rule values can&rsquo;t be edited here or later. Adding a location in a new state asks again for that state.">Confirm</button>
+              <span class="text-xs text-slate-600">You can go live without confirming. After go-live, the rules stay visible in Ledger Settings.</span>
+            </div>
+          </div>
+        </div>
+      </div><div class="mt-3 rounded-lg border border-slate-200 bg-white px-3.5 py-3">
+        <div class="flex items-start gap-2">
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-settings-2 w-4 h-4 text-slate-600 shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 17H5" />
+  <path d="M19 7h-9" />
+  <circle cx="17" cy="17" r="3" />
+  <circle cx="7" cy="7" r="3" />
+</svg>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <p class="text-sm font-semibold text-slate-900">Confirm settings your disciplines suggest differently</p>
+              <span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Doesn&rsquo;t block go-live</span>
+            </div>
+            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Your disciplines suggest different values for Health history review and Move to Reengage after. We applied one for each; confirm them or change them.</p>
+            <a href="#wiz-ref-combined-settings" class="inline-flex mt-2 text-xs font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Go to Combined settings (int-05) &mdash; opens the Settings your disciplines suggest differently dialog (int-06), drawn under Reference below. The item clears when the Owner chooses Confirm settings.">Review these settings &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <p class="text-xs text-slate-600 mt-2 leading-relaxed">Shown here as it appears for a practice with two disciplines whose suggestions differ. It stays until the Owner chooses <b>Confirm settings</b> (Decide later leaves it), and a one-discipline practice, or one whose disciplines agree, never sees it.</p>
+        </div>
+      </div>      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full border border-slate-300 text-slate-600 text-xs font-bold shrink-0">6</span>
+          
+        </div>
+        <div class="flex-1 min-w-0 ">
+          <span class="text-sm text-slate-600"><span id="wiz-step-6" class="block scroll-mt-4"></span>Go-Live</span>
+          <p class="text-xs text-slate-600 mt-0.5">Available at <span title="ready_for_go_live">ready for go live</span> &mdash; the Owner or any invited User with appropriate role assignments, not Owner-exclusive. <b>Go live now:</b> status &rarr; live. <b>Schedule go-live:</b> status &rarr; <span title="go_live_pending">go live pending</span> with a date; goes live automatically that day, without re-running the Readiness Gate.</p>
+          <div class="mt-2 rounded-md border border-slate-200 bg-white px-3 py-2.5">
+        <p class="text-sm text-slate-800">Ready when you are. Go live now, or pick a date and PSG switches you over that morning.</p>
+        <div class="flex flex-wrap items-center gap-2 mt-2.5">
+          <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Go live now &mdash; the practice goes live immediately. The Owner, or an invited user whose role allows it, can do this. Shown only once the Readiness step is reached.">Go live now</button>
+          <a href="#wiz-ref-schedule" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Schedule go-live &mdash; opens a date picker (future dates only). The practice goes live automatically that day; Readiness isn&rsquo;t re-checked.">Schedule go-live&hellip;</a>
+        </div>
+      </div>
+      <div class="mt-2 rounded-md border border-info bg-info/10 px-3 py-2.5 flex items-start gap-2" role="status">
+        <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-calendar-clock w-4 h-4 text-info-text shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 14v2.2l1.6 1" />
+  <path d="M16 2v3" />
+  <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338" />
+  <path d="M3 9h5.859" />
+  <path d="M8 2v3" />
+  <circle cx="16" cy="16" r="6" />
+</svg>
+
+        <div class="flex-1 min-w-0"><p class="text-sm font-semibold text-info-text">Go-live scheduled for Monday, October 5, 2026</p>
+          <p class="text-xs text-slate-700 mt-0.5">No further action needed. After scheduling, this replaces the two buttons above. <a href="#wiz-ref-schedule" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ml-1" title="Change date &mdash; reopens the date picker with October 5 selected; you can also choose Go live now from there.">Change date</a></p></div>
+      </div>
+        </div>
+      </div></div>
+      </div>
+      <div class="flex flex-wrap items-center gap-1.5 mt-3 pt-3 border-t border-slate-100"><span class="text-xs font-bold uppercase tracking-wide text-slate-600 mr-1 shrink-0">Terminal states:</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Live</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Go-live pending</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Config incomplete</span><span class="inline-flex items-center gap-1 rounded-full border bg-slate-100 text-slate-600 border-slate-200 px-2 py-0.5 text-2xs font-semibold whitespace-nowrap">Rejected &mdash; signup failed</span></div>
+      <div class="mt-4">      <details id="wiz-refs" class="group scroll-mt-4" open>
+        <summary class="list-none cursor-pointer flex items-center gap-1.5 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600 [&::-webkit-details-marker]:hidden marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Dialogs, menus and states a static mockup can&rsquo;t show open. Each panel action above jumps to its card here. Click to collapse or expand.">
+          <svg aria-hidden="true" focusable="false"
+  class="lucide lucide-chevron-down w-3.5 h-3.5 -rotate-90 group-open:rotate-0 transition-transform"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+Reference &mdash; dialogs and states (10)
+        </summary>
+        <p class="text-xs text-slate-600 mb-2 leading-relaxed">States and dialogs the wizard shows along the way. Each control above jumps to its card.</p><div class="columns-1 gap-3 mt-1">
+<div id="wiz-ref-no-trial" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; No-trial signup</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Variant &middot; this signup offers no trial</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-4 space-y-3"><p class="text-base font-bold text-slate-900">Create my practice</p><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Practice name <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="" placeholder="e.g. Cornerstone Chiropractic" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label><div class="grid grid-cols-2 gap-3"><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Your name <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="" placeholder="Owner&rsquo;s full name" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Your email <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="" placeholder="owner@practice.com" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label></div><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Mobile phone for account notices <span class="font-normal text-slate-600">(optional)</span></span><span class="relative block"><input type="text" readonly value="" placeholder="(555) 000-0000" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Choose your plan <span class="text-destructive" aria-hidden="true">*</span></span><div class="grid grid-cols-1 sm:grid-cols-2 gap-2" role="radiogroup" aria-label="Choose your plan"><div role="radio" aria-checked="true" class="flex items-start gap-2.5 rounded-lg border border-primary bg-primary/5 px-3 py-2.5"><span class="mt-0.5 inline-flex items-center justify-center w-4 h-4 rounded-full border-2 border-primary shrink-0"><span class="w-2 h-2 rounded-full bg-primary"></span></span><span class="flex-1 min-w-0"><span class="block text-sm font-semibold text-slate-900">Essential &middot; $249/mo</span><span class="block text-xs text-slate-600 mt-0.5 leading-relaxed">Up to 2 Locations, core modules.</span></span></div><div role="radio" aria-checked="false" class="flex items-start gap-2.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 px-3 py-2.5"><span class="mt-0.5 inline-block w-4 h-4 rounded-full border-2 border-slate-300 bg-white shrink-0"></span><span class="flex-1 min-w-0"><span class="block text-sm font-semibold text-slate-900">Growth &middot; $449/mo</span><span class="block text-xs text-slate-600 mt-0.5 leading-relaxed">Unlimited Locations.</span></span></div></div></div><div><span class="text-xs font-semibold text-slate-700 mb-1 block">Payment method <span class="text-destructive" aria-hidden="true">*</span></span><div class="rounded-md border border-slate-300 bg-white px-3 py-2 flex items-center gap-3" title="Card field hosted by the payment provider; PSG never sees or stores the full card number."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-credit-card w-4 h-4 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+</svg>
+<span class="flex-1 text-sm text-slate-600">Card number</span><span class="text-sm text-slate-600">MM / YY</span><span class="text-sm text-slate-600">CVC</span></div><p class="text-xs text-slate-600 mt-1">Entered securely with our payment provider.</p></div><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 w-full justify-center" title="Creates the practice and starts the subscription on the chosen plan in one step. A declined card shows inline here.">Create account and subscribe</button></div><p class="text-xs text-slate-600 mt-2 leading-relaxed">Shown in place of the signup form above when this signup offers no free trial. The account starts paid right away: no trial wording, no countdown and no expiry reminders. Check your email and Set your password follow as usual.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-payment-start" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Step 1b &mdash; Add a payment method to start</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Sales-led account, no trial</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-4 space-y-3">
+          <div><p class="text-base font-bold text-slate-900">Add a payment method to start</p><p class="text-xs text-slate-600 mt-0.5">marcus.wexley@downtownpsg.com</p></div>
+          <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5"><p class="text-xs text-slate-600">Your plan</p><p class="text-sm font-semibold text-slate-900">Growth &middot; $449/mo</p><p class="text-xs text-slate-600 mt-0.5">Unlimited Locations. Chosen with your sales representative.</p></div>
+          <div class="rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2 flex items-start gap-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-alert-triangle w-4 h-4 shrink-0 mt-0.5 text-destructive"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+<div><p class="text-sm font-semibold text-destructive">Your card was declined.</p><p class="text-xs text-slate-700 mt-0.5 leading-relaxed">Nothing was charged. Try another card, or contact your bank.</p></div></div>
+          <div><span class="text-xs font-semibold text-slate-700 mb-1 block">Payment method <span class="text-destructive" aria-hidden="true">*</span></span><div class="rounded-md border border-destructive bg-white px-3 py-2 flex items-center gap-3" title="Card field hosted by the payment provider; PSG never sees or stores the full card number."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-credit-card w-4 h-4 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+</svg>
+<span class="flex-1 text-sm text-slate-600">Card number</span><span class="text-sm text-slate-600">MM / YY</span><span class="text-sm text-slate-600">CVC</span></div><p class="text-xs text-slate-600 mt-1">Entered securely with our payment provider.</p></div>
+          <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 w-full justify-center" title="Adds the card and starts the subscription on the plan shown, then opens Account setup.">Add payment method and continue</button>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">For an account a salesperson set up with no trial: the Owner&rsquo;s first sign-in opens only this step, with no setup progress and no navigation. Adding a payment method starts the subscription, then setup continues at Account setup. Shown with the declined-card error.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-payment-failed" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Step 1b &mdash; Your payment didn&rsquo;t go through</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Variant &middot; first charge failed after signup</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-4 space-y-3">
+          <div><p class="text-base font-bold text-slate-900">Your payment didn&rsquo;t go through</p><p class="text-xs text-slate-600 mt-0.5">owner@cornerstonechiro.com</p></div>
+          <div class="rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2 flex items-start gap-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-alert-triangle w-4 h-4 shrink-0 mt-0.5 text-destructive"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+<div><p class="text-sm font-semibold text-destructive">We couldn&rsquo;t charge your card for Essential &middot; $249/mo.</p><p class="text-xs text-slate-700 mt-0.5 leading-relaxed">Update your payment method to start using your account. We also sent you an email about this.</p></div></div>
+          <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5"><p class="text-xs text-slate-600">Your plan</p><p class="text-sm font-semibold text-slate-900">Essential &middot; $249/mo</p><p class="text-xs text-slate-600 mt-0.5">Up to 2 Locations, core modules. Chosen at signup.</p></div>
+          <div><span class="text-xs font-semibold text-slate-700 mb-1 block">Payment method <span class="text-destructive" aria-hidden="true">*</span></span><div class="rounded-md border border-slate-300 bg-white px-3 py-2 flex items-center gap-3" title="Card field hosted by the payment provider; PSG never sees or stores the full card number."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-credit-card w-4 h-4 text-slate-600 shrink-0"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="20" height="14" x="2" y="5" rx="2" />
+  <line x1="2" x2="22" y1="10" y2="10" />
+</svg>
+<span class="flex-1 text-sm text-slate-600">Card number</span><span class="text-sm text-slate-600">MM / YY</span><span class="text-sm text-slate-600">CVC</span></div><p class="text-xs text-slate-600 mt-1">Entered securely with our payment provider.</p></div>
+          <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 w-full justify-center" title="Charges the new card and starts the subscription on the plan shown, then opens Account setup.">Update payment method and continue</button>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">For a signup with no trial whose card was accepted but whose first charge then failed: every sign-in opens only this step, with no setup progress and no navigation, until a working card is saved. A card declined during signup never gets here &mdash; the signup form shows the error and creates nothing. An account still unpaid 30 days after signup is closed.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-check-email" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Check your email</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">After Create my practice</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-5 text-center">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary mb-2"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-mail w-5 h-5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" />
+</svg>
+</span>
+          <p class="text-base font-bold text-slate-900">Check your email</p>
+          <p class="text-sm text-slate-700 mt-1 leading-relaxed">We sent a link to <b>marcus.wexley@downtownpsg.com</b> to set your password and continue setting up your practice.</p>
+          <p class="text-xs text-slate-600 mt-3">Didn&rsquo;t get it? Check spam, or <button type="button" class="font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Resend link &mdash; sends a fresh link; the earlier one stops working. Limited to a few resends an hour.">resend the link</button>.</p>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Replaces the signup form once the practice is created. The link is the same single-use set-password invite every new staff user gets, and following it confirms the Owner&rsquo;s email &mdash; the address account and billing notices go to.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-set-password" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Set your password</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">From the emailed link</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-4">
+          <p class="text-base font-bold text-slate-900">Set your password</p>
+          <p class="text-xs text-slate-600 mt-0.5 mb-3">marcus.wexley@downtownpsg.com</p>
+          <div class="space-y-2.5">
+            <label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">New password <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="" placeholder="At least 12 characters" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900" title="12 characters minimum; no other complexity rules. Passwords found in known data breaches aren&rsquo;t accepted."></span></label>
+            <label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Confirm new password <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="" placeholder="Type it again" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900"></span></label>
+          </div>
+          <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 w-full justify-center mt-3" title="Sets the password, signs you in and opens the wizard at Account setup.">Set password and continue</button>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">An expired or already-used link shows &ldquo;This link has expired&rdquo; with <b>Send a new link</b>. If you leave mid-setup, sign in normally and the wizard reopens where you stopped.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-pair-phone" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Step 1c &mdash; Pair your phone</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">First sign-in, before the first screen</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white px-5 py-5">
+          <p class="text-base font-bold text-slate-900">Pair your phone</p>
+          <p class="text-sm text-slate-700 mt-1 mb-4 leading-relaxed">Your role needs a second sign-in step. Install the PSG app and pair your phone.</p>
+          <div class="flex items-center gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <span class="flex items-center justify-center w-24 h-24 rounded-md bg-white border border-slate-200 text-slate-900 shrink-0"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-qr-code w-16 h-16"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="5" height="5" x="3" y="3" rx="1" />
+  <rect width="5" height="5" x="16" y="3" rx="1" />
+  <rect width="5" height="5" x="3" y="16" rx="1" />
+  <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+  <path d="M21 21v.01" />
+  <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+  <path d="M3 12h.01" />
+  <path d="M12 3h.01" />
+  <path d="M12 16v.01" />
+  <path d="M16 12h1" />
+  <path d="M21 12v.01" />
+  <path d="M12 21v-1" />
+</svg>
+</span>
+            <div class="text-sm text-slate-600 space-y-1.5">
+              <p>Or enter this code in the app:</p>
+              <p class="font-mono text-md font-bold tracking-widest text-slate-900">482&nbsp;913</p>
+              <p class="inline-flex items-center gap-1.5 text-xs"><!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-loader-circle w-3.5 h-3.5 text-primary animate-spin"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+</svg>
+Waiting for your phone&hellip;</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Shown after the Owner sets a password and signs in for the first time, before any setup screen and before the payment step where one applies. It cannot be skipped, and a practice on a free trial sees it too. Once the phone pairs, the sign-in finishes with an approval on the phone and setup opens at Account setup. Owners who sign in through their organization&rsquo;s single sign-on do not see it.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-schedule" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Schedule go-live</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Go live step</span>
+  </div>
+  <div class="p-4">
+      <div class="rounded-lg border border-slate-200 bg-white shadow-sm" role="dialog" aria-label="Schedule go-live (reference)">
+        <div class="px-4 py-3 border-b border-slate-100"><p class="text-sm font-bold text-slate-900">Schedule go-live</p><p class="text-xs text-slate-600 mt-0.5">Pick the day the practice switches over.</p></div>
+        <div class="px-4 py-3 space-y-3"><label class="block"><span class="text-xs font-semibold text-slate-700 mb-1 block">Go-live date <span class="text-destructive" aria-hidden="true">*</span></span><span class="relative block"><input type="text" readonly value="10/05/2026" class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 pr-9" title="Date picker; today and earlier are disabled."><svg aria-hidden="true" focusable="false"
+  class="lucide lucide-calendar w-4 h-4 text-slate-600 absolute right-3 top-1/2 -translate-y-1/2"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v3" />
+  <path d="M16 2v3" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
+  <path d="M3 9h18" />
+</svg>
+</span></label><p class="text-xs text-slate-600 leading-relaxed">The practice goes live automatically at the start of that day, in the practice&rsquo;s time zone. Until then everything stays in setup mode, and you can still change the date or go live sooner.</p></div>
+        <div class="px-4 py-2.5 border-t border-slate-100 flex items-center justify-end gap-2"><button class="inline-flex items-center gap-1.5 rounded-md text-slate-700 hover:bg-slate-100 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Closes; nothing changes.">Cancel</button><button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Schedule &mdash; sets the go-live date; the Go live step then shows the scheduled card with Change date.">Schedule</button></div>
+      </div>
+  </div>
+</div></div>
+<div id="wiz-ref-combined-settings" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Settings your disciplines suggest differently</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Owner only &middot; opens from the Readiness Gate item</span>
+  </div>
+  <div class="p-4">
+<div class="mt-2 rounded-lg border border-slate-200 bg-white px-3.5 py-3">
+        <p class="text-sm font-semibold text-slate-900">Your disciplines start with different suggestions for a few practice-wide settings.</p>
+        <p class="text-xs text-slate-700 mt-0.5 leading-relaxed">Here is what we&rsquo;ve applied. Change anything you like, then confirm.</p>
+        <div class="space-y-2 mt-2.5"><div class="rounded-md border border-slate-200 bg-white px-3 py-2.5"><p class="text-sm font-semibold text-slate-900">Health history review</p><p class="text-sm text-slate-800 mt-1"><span class="text-xs font-semibold uppercase tracking-wide text-slate-600">Applied</span>&nbsp; Every <b>6 months</b></p><p class="text-xs text-slate-600">The shortest of your disciplines&rsquo; suggestions</p><p class="text-xs font-semibold uppercase tracking-wide text-slate-600 mt-2">Suggested by</p><ul class="text-xs text-slate-700 list-disc pl-4 space-y-0.5"><li>Chiropractic suggests every 12 months</li><li>Physical Therapy suggests every 6 months</li></ul><div class="mt-2"><span class="inline-flex items-center gap-2 text-xs text-slate-700">Ask for a health history review every <span class="inline-flex items-center gap-2" title="Between 1 and 36 months. Prefilled with the value applied."><input type="number" disabled value="6" aria-label="Health history review, in months" class="w-20 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"><span class="text-xs text-slate-600">months</span></span></span></div></div><div class="rounded-md border border-slate-200 bg-white px-3 py-2.5"><p class="text-sm font-semibold text-slate-900">Move to Reengage after</p><p class="text-sm text-slate-800 mt-1"><span class="text-xs font-semibold uppercase tracking-wide text-slate-600">Applied</span>&nbsp; <b>Each patient&rsquo;s own visit rhythm</b></p><p class="text-xs text-slate-600">A neutral setting, because your disciplines suggest different ones</p><p class="text-xs font-semibold uppercase tracking-wide text-slate-600 mt-2">Suggested by</p><ul class="text-xs text-slate-700 list-disc pl-4 space-y-0.5"><li>Chiropractic suggests 60 days</li><li>Physical Therapy suggests 90 days</li></ul><div class="mt-2"><span class="inline-flex items-center gap-0.5 rounded-md bg-slate-100 p-0.5"><span class="px-2.5 py-1 rounded text-xs bg-white text-slate-900 shadow-sm font-semibold">Each patient&rsquo;s own visit rhythm</span><span class="px-2.5 py-1 rounded text-xs text-slate-600">A fixed number of days</span></span></div></div></div>
+        <div class="flex items-center justify-end gap-2 mt-3">
+          <button class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Decide later (int-03) &mdash; saves nothing and continues; the values above stand. &lsquo;Confirm settings your disciplines suggest differently&rsquo; then shows on the setup checklist until you confirm, and reopens from the wizard&rsquo;s readiness item.">Decide later</button>
+          <button class="inline-flex items-center gap-1.5 rounded-md bg-primary hover:bg-primary-hover text-primary-foreground text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 !text-xs !px-3 !py-1.5" title="Confirm settings (int-02) &mdash; saves any value you changed, records that you confirmed, and continues. Always available; confirming with no change records the applied values as confirmed.">Confirm settings</button>
+        </div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Only the practice Owner answers this. If a save fails it says &ldquo;Couldn&rsquo;t save your settings. Nothing has changed.&rdquo; and you stay here.</p>
+      </div><p class="text-xs text-slate-600 mt-2 leading-relaxed">Opened by the Readiness Gate item &ldquo;Confirm settings your disciplines suggest differently&rdquo; (int-05, int-06). A sales-led Multipractice Owner sees it on their first wizard visit when the settings differ.</p>
+  </div>
+</div></div>
+<div id="wiz-ref-view-scope" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Clinical View Scope step</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Before Account Setup &middot; sales-led or resumed Owner</span>
+  </div>
+  <div class="p-4">
+<p class="text-xs text-slate-600 mb-1 leading-relaxed">Shown the first time the Owner signs in to a practice with two or more disciplines whose Clinical View Scope is unanswered (sales-led creation, or a self-serve signup left before the question). Same question and Coordinated warning as <a href="multi-discipline-marketplace-signup.html" class="text-primary font-medium hover:underline">Multi-Discipline Marketplace Signup</a> Step 3a.</p><div class="mt-2 rounded-lg border border-slate-200 bg-white px-3.5 py-3">
+        <p class="text-sm font-semibold text-slate-900">Will providers across the locations you add coordinate care on shared patients, or should each location&rsquo;s activity stay separate by default?</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2.5" role="radiogroup" aria-label="How disciplines share patients" aria-required="true">
+          <div role="radio" aria-checked="false" class="flex items-start gap-2.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 px-3 py-2.5"><span class="mt-0.5 inline-block w-4 h-4 rounded-full border-2 border-slate-300 bg-white shrink-0"></span><span class="flex-1 min-w-0"><span class="block text-sm font-semibold text-slate-900">Coordinated</span><span class="block text-xs text-slate-600 mt-0.5 leading-relaxed">Providers see a shared patient&rsquo;s full clinical history across disciplines by default.</span></span></div>
+          <div role="radio" aria-checked="false" class="flex items-start gap-2.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 px-3 py-2.5"><span class="mt-0.5 inline-block w-4 h-4 rounded-full border-2 border-slate-300 bg-white shrink-0"></span><span class="flex-1 min-w-0"><span class="block text-sm font-semibold text-slate-900">Clinic-scoped</span><span class="block text-xs text-slate-600 mt-0.5 leading-relaxed">Each location sees only its own clinic&rsquo;s activity by default. Anyone can still expand to the full record.</span></span></div>
+        </div>
+        <div class="mt-2.5"><div class="rounded-lg border border-warning bg-warning/10 px-3.5 py-3">
+        <div class="flex items-start gap-2">
+          <!-- @license lucide-static v1.43.0 - ISC -->
+<svg
+  class="lucide lucide-alert-triangle w-4 h-4 text-warning-text shrink-0 mt-0.5"
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" />
+</svg>
+
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-warning-text">Coordinated shows every discipline&rsquo;s chart to every Location you add.</p>
+            <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Every provider and staff member across every Location you add will see a shared patient&rsquo;s full history from every other discipline by default. Only choose Coordinated if every Location is genuinely coordinating care on shared patients &mdash; not just sharing one patient record.</p>
+          </div>
+        </div>
+      </div></div>
+        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Either way, nobody&rsquo;s access changes &mdash; this only sets what opens by default. The warning stays visible so it&rsquo;s read before choosing Coordinated.</p>
+        <div class="flex justify-end mt-2.5"><button type="button" disabled aria-disabled="true" class="inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground text-xs font-semibold px-3 py-1.5 opacity-50 cursor-not-allowed" title="Continue &mdash; disabled until you choose Coordinated or Clinic-scoped. Saves the practice-wide default and opens Account setup.">Continue</button></div>
+      </div><p class="text-xs font-semibold text-slate-700 mt-2">Required to continue &middot; Owner only</p><p class="text-xs text-slate-600 mt-1 leading-relaxed">Internal Staff in an implementation session see: <i>The Owner answers this.</i> They never answer it.</p><p class="text-xs text-slate-600 mt-1 leading-relaxed">Next: <a href="#wiz-ref-combined-settings" class="text-primary font-medium hover:underline">Settings your disciplines suggest differently</a> (when they differ).</p>
+  </div>
+</div></div>
+<div id="clinic-help-ref" class="break-inside-avoid mb-3 scroll-mt-4"><div class="rounded-lg border border-slate-200 bg-white border-dashed">
+  <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+    <span class="text-sm font-semibold text-slate-900">Reference &mdash; Learn more popover</span>
+    <span class="text-xs text-slate-600 font-normal normal-case text-right">Opens from the clinic help line &middot; in the app</span>
+  </div>
+  <div class="p-4">
+<div class="rounded-lg border border-slate-200 bg-white shadow-md p-3 text-xs leading-relaxed" role="dialog" aria-label="Setting up your clinics" data-note="Info popover open (opened by Learn more) &mdash; anchored to the help line; Esc or outside click closes. No Help &amp; Support article is needed at launch."><div class="font-semibold text-slate-900 text-sm">Setting up your clinics</div><ul class="list-disc pl-4 mt-1.5 space-y-1 text-slate-700"><li>Add one location for each clinic &mdash; the rooms, providers and staff who book and check patients in together.</li><li>Two clinics in one building are two locations. Each has its own check-in and check-out, cash drawer and supplies.</li><li>Staff who cover several clinics get a role at each and switch between them.</li><li>Each clinic belongs to one billing entity. A clinic of a second entity needs its own fee schedule.</li><li>Banner panels follow each clinic&rsquo;s discipline. To show a panel at every clinic, set it practice-wide in Patient Banner settings.</li></ul></div><p class="text-xs text-slate-600 mt-2 leading-relaxed">Learn more on the clinic help line (int-04) opens this small popover instead of a Help &amp; Support article. It is help only: it adds no field and saves nothing. Same popover on Practice Signup &amp; Onboarding Wizard Step 2 and on Locations&rsquo; Add location.</p>
+  </div>
+</div></div>
+        </div>
+      </details></div>
+    </div></div>
+  </div>
+</div>
+</body>
+</html>
