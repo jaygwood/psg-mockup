@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 2 batch, SCHEDULE-remainder &mdash; Schedule Settings (<code>schedule-settings.html</code>).</b> Hosted in Admin Shell&rsquo;s pre-existing &ldquo;practicesetup&rdquo; rail group (RAIL_GROUPS_ADMIN already cites this screen). Cancellation Policy / Schedule Sweep Settings are Present (full); Telehealth Configuration is Phase 2+ scope only &mdash; shown, not hidden, per the spec&rsquo;s own explicit direction (distinct from Practice Setup Settings&rsquo; fully-hidden Sliding Scale panel, which IS Phase 1 Absent). <b>2026-09-24:</b> the Patient Flow Policy panel (ADR-678, not previously drawn in this corpus) is added, including the new <b>On-time window</b> field (ADR-686; feeds Day Plan&rsquo;s on-time starts trend). The rail lists the Practice Setup group&rsquo;s items, with Schedule Settings selected. <b>2026-09-26:</b> the unconfirmed appointment alert joins the sweep settings; Patient Flow policy gains every readiness signal (patient alerts are advisory only &mdash; they never block check-in or check-out), automatic check-in, the arrival keyword, the check-in QR code and room turnover (<b>2026-09-30, ADR-708:</b> the no-show grace field, the text-reply channel, the arrival keyword and the auto-complete switch are removed; self check-in is one QR switch, all or nothing); a Room Ready notifications default is added; Telehealth renders disabled until Phase 2. Appointment Types and Rooms &amp; Equipment join the Practice Setup rail, which now lists eight items (admin-shell.md rows 16, 22, 23, 25, 34, 35, 31, 32). <b>2026-10-08 (stress test C8):</b> Stage durations show one list per discipline practised at the Location; a reference card shows a clinic with two disciplines. <b>2026-10-08 (stress test C11):</b> a line under Readiness enforcement says Next visit booked and Treatment plan visit count check only the visit&rsquo;s own discipline.
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

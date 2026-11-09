@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 1 batch, PRACTICE-SETUP &mdash; Practice Setup Settings (<code>practice-setup-settings.md</code>).</b> Hosted in Admin Shell&rsquo;s pre-existing &ldquo;practicesetup&rdquo; rail group (RAIL_GROUPS_ADMIN, already enabled &mdash; this rail has no real per-row href mechanism at all, unlike Global Nav/Users, so no registry change was needed). Ported 1:1 from the committed low-fi HTML, which already reflects <b>ADR-624</b>&rsquo;s redesign (merged Location Hours &amp; Closure Events panel, 12-month/<code>end_date</code> display window, single-Location Module Enablement with an opt-in Compare Locations view). <b>Landmine check, resolved:</b> the low-fi build.py/committed-HTML drift this batch was warned about (first flagged by the CONTACTS low-fi batch, 2026-09-03) was independently confirmed already closed &mdash; low-fi&rsquo;s own 2026-09-04 dedicated fix ported ADR-624 into build.py&rsquo;s generator the very next day, and a fresh diff at the start of this styled batch confirms zero drift remains. No workaround was needed here. <b>Corrected 2026-09-10 (Jay chat review):</b> renamed the Default Methods panel to <b>Default Clinical Methods</b> (disambiguating from the unrelated Contact Method entity, <code>crm-relationships.md</code>); wired its <code>method_ids</code> chips into an actual MultiSelect trigger (add/remove, Adopted 2026-08-21 primitive) in place of static badges; and built the Location Hours &amp; Closure Events / Module Enablement panels&rsquo; own Record Switcher instances plus an always-visible Location label, both previously only described in a note rather than actually rendered (components.md&rsquo;s own eighth-consumer citation, ADR-624). <b>2026-09-24 (ADR-686):</b> Module enablement&rsquo;s Conversations row gains the <b>Response target</b> input (int-08); the rail lists the Practice Setup group&rsquo;s items, with Practice Setup Settings selected (eight since 2026-09-26, when Appointment Types and Rooms &amp; Equipment joined). <b>2026-09-26:</b> Default Clinical Methods sample values now follow <code>clinical-taxonomy.md</code> (real techniques, e.g. Diversified, McKenzie, CBT); Module enablement gains <b>Practice modules</b> &mdash; Workers&rsquo; Comp, Inventory and Plans &amp; Packages on/off per practice with a location override, and Case management shown as always on. <b>2026-09-27 (gap sweep &mdash; Ledger/Insurance):</b> Practice modules splits Memberships from Prepaid packages and adds Payment plans, Employer billing, Personal-injury LOP, Capitation contracts and Global case fees (each its own Ledger configuration on/off), plus a Sliding scale row; the <b>Sliding scale eligibility policy</b> panel is shown (Phase 1, ADR-561) with policy and tier create, edit, activate and remove. <b>2026-09-29:</b> new <b>Patient cases</b> panel &mdash; the practice&rsquo;s case idle period (default 90 days, minimum 90), with its Change dialog in the Reference section. <b>2026-09-29 (ADR-639 revision):</b> new <b>Patients</b> panel &mdash; Move to Reengage after (each patient&rsquo;s visit rhythm by default), the Inactive period (12 months) and the Archive period (36 months). <b>2026-10-07 (subsidiary guide decisions &mdash; D8):</b> the Patients panel gains <b>Patient banner panels</b> &mdash; Treatment plan, Insurance, Cases, Recare and Plans &amp; packages, each Discipline default / On / Off for the whole practice (Plans &amp; packages shown Off). <b>2026-10-29 (D8):</b> a <b>Supervision</b> section &mdash; Co-signature Policy per License Type, state rule read-only, the practice&rsquo;s own rule never looser (reference card for the dialog). <b>2026-10-29 (D4):</b> the Patients section gains a <b>Photography consent</b> row &mdash; Show a notice or Require consent (reference card). <b>2026-10-29 &mdash; clinic setup and onboarding (multi-discipline stress test: Recommendation 0, C17, O5)</b>: Add closure applies to All locations or Choose locations; Location hours gain Copy hours to&hellip; with a confirmation naming the locations (reference cards).
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:15 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:15 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

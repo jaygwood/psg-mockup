@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 4 batch, MEMBERSHIPS &mdash; Member Account (<code>member-account.md</code>).</b> Renders as Patient File&rsquo;s own <b>Memberships</b> tab content, previously inert &mdash; lights up that tab for the first time. Mirrors <code>low-fi/member-account.html</code> 1:1 for content/personas/sample data (Diane Okafor &middot; Family Adjustment Plan, billing owner). Two Dialog-over-host Workflows hand off from this screen&rsquo;s own Lifecycle Actions panel: <code>enroll-in-membership-plan.html</code> and <code>suspend-cancel-reassign-billing-owner.html</code>, both batched this same pass. <b>Re-scoped 2026-09-17, ADR-646:</b> this tab is now Patient File&rsquo;s own Plans &amp; Packages tab (previously Memberships) -- appends a Prepaid Packages section reusing package-enrollment.html&rsquo;s own panel verbatim, illustrating this Tenant&rsquo;s both-enabled state. <b>Updated 2026-09-18, ADR-642 (Jay's direct request):</b> both Membership and Prepaid Packages sections converted to <code>record_list</code>() + <code>master_detail</code>(); the Membership toolbar's Status filter dropped (a patient/family's own membership/package count is bounded by household size, not Tenant volume); each section gains a same-page jump link to the other (real in-page jump links); Billing History's Source column no longer leaks the raw <code>membership_recurring</code> enum value. <b>2026-10-08 (stress test C15):</b> Plan &amp; billing summary shows the plan&rsquo;s retail discount under Entitlement terms (&ldquo;Retail: 10% off Chiropractic products &middot; Supplements&rdquo;), and Schedule terms change can change it. <b>2026-10-29 (D10):</b> cycle usage in units, &ldquo;12 of 20 units left this cycle&rdquo;, and &ldquo;Counts&rdquo; in the terms snapshot (reference card). <b>2026-10-30 (lifecycle-scale stress test, B6 &mdash; R10, W3):</b> Lifecycle actions gain <b>Transfer to another clinic</b>, with its dialog and the two-row result drawn as a reference card.
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -487,7 +491,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -539,7 +543,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -870,7 +874,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

@@ -8,8 +8,12 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
-    <b>STYLED MOCKUP &mdash; Wave 2 batch, SCHEDULE-remainder &mdash; Schedule Calendar (<code>schedule-calendar-day-week-room-view-worklist-expanded.html</code>).</b> Record View, this module&rsquo;s own container/anchor screen &mdash; ported 1:1 from the committed low-fi HTML (Module Tabstrip Providers/Rooms, 2026-08-30 restructure; Toolbar&rsquo;s Day/Week segmented control + Date Picker, 2026-09-01; Schedule Worklist panel, ADR-614). Appointment Detail (ADR-487) is shown open as the ephemeral Action Center tab, its field set/action row shared with every other screen that opens it (ADR-616). Now the real destination Book Appointment&rsquo;s own dialog hosts over &mdash; see that screen&rsquo;s own updated docstring. Alternate version of <code>index.html</code> (whose own default, as of ADR-644, is now COLLAPSED), Schedule Worklist shown EXPANDED (one full card per record) instead &mdash; use the chevron in the Worklist&rsquo;s own header to toggle back, or open the anchor file directly. <b>2026-10-08 (stress test E1):</b> overlapping visits in one provider column sit side by side, and a Book anyway visit shows &ldquo;Double-booked by &hellip;&rdquo; on Appointment Detail (reference card &ldquo;Overlapping visits&rdquo; on the main calendar view).
+    <b>STYLED MOCKUP &mdash; Wave 2 batch, SCHEDULE-remainder &mdash; Schedule Calendar (<code>schedule-calendar-day-week-room-view-worklist-expanded.html</code>).</b> Record View, this module&rsquo;s own container/anchor screen &mdash; ported 1:1 from the committed low-fi HTML (Module Tabstrip Providers/Rooms, 2026-08-30 restructure; Toolbar&rsquo;s Day/Week segmented control + Date Picker, 2026-09-01; Schedule Worklist panel, ADR-614). Appointment Detail (ADR-487) is shown open as the ephemeral Action Center tab, its field set/action row shared with every other screen that opens it (ADR-616). Now the real destination Book Appointment&rsquo;s own dialog hosts over &mdash; see that screen&rsquo;s own updated docstring. Alternate version of <code>schedule-calendar-day-week-room-view.html</code> (whose own default, as of ADR-644, is now COLLAPSED), Schedule Worklist shown EXPANDED (one full card per record) instead &mdash; use the chevron in the Worklist&rsquo;s own header to toggle back, or open the anchor file directly. <b>2026-10-08 (stress test E1):</b> overlapping visits in one provider column sit side by side, and a Book anyway visit shows &ldquo;Double-booked by &hellip;&rdquo; on Appointment Detail (reference card &ldquo;Overlapping visits&rdquo; on the main calendar view).
   </div>
   <div class="relative flex-1 min-h-0 flex">
     <div class="psg-nav-toggle w-14 [&:has(:checked)]:w-56 shrink-0 bg-slate-50 text-slate-700 flex flex-col border-r border-slate-200" role="navigation" aria-label="Global navigation">
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm bg-blue-100 text-blue-700 font-semibold shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm bg-blue-100 text-blue-700 font-semibold shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md bg-blue-100 text-blue-700 shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md bg-blue-100 text-blue-700 shadow-[inset_3px_0_0_theme(colors.blue.600)]" aria-current="page" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
@@ -1518,7 +1522,7 @@ Edit</label>
   <path d="m6 9 6 6 6-6" />
 </svg>
 </summary>
-        <div class="absolute left-0 top-full mt-1 z-30 w-64 rounded-md border border-slate-200 bg-white shadow-lg p-2 text-sm text-slate-700 space-y-1"><div class="px-2 pt-1 pb-1 text-2xs font-semibold uppercase tracking-wide text-slate-600">Providers &middot; Downtown Office</div><a href="index.html" class="flex items-center justify-between rounded px-2 py-1.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Show all &mdash; clears the filter">Show all <span class="text-xs font-normal text-slate-600">3 providers</span></a><div class="border-t border-slate-100 my-1" role="separator"></div><div class="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-slate-50"><span aria-label="Dr. Osei" class="inline-flex items-center justify-center w-4 h-4 rounded border bg-blue-600 border-blue-600 text-white shrink-0" role="checkbox" aria-checked="true"><!-- @license lucide-static v1.43.0 - ISC -->
+        <div class="absolute left-0 top-full mt-1 z-30 w-64 rounded-md border border-slate-200 bg-white shadow-lg p-2 text-sm text-slate-700 space-y-1"><div class="px-2 pt-1 pb-1 text-2xs font-semibold uppercase tracking-wide text-slate-600">Providers &middot; Downtown Office</div><a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-between rounded px-2 py-1.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Show all &mdash; clears the filter">Show all <span class="text-xs font-normal text-slate-600">3 providers</span></a><div class="border-t border-slate-100 my-1" role="separator"></div><div class="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-slate-50"><span aria-label="Dr. Osei" class="inline-flex items-center justify-center w-4 h-4 rounded border bg-blue-600 border-blue-600 text-white shrink-0" role="checkbox" aria-checked="true"><!-- @license lucide-static v1.43.0 - ISC -->
 <svg
   class="lucide lucide-check w-3 h-3"
   xmlns="http://www.w3.org/2000/svg"
@@ -1565,7 +1569,7 @@ Edit</label>
 </svg>
 </span><span class="text-sm text-slate-700">Dr. Brooks</span><button type="button" class="ml-auto text-xs font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Only Dr. Brooks &mdash; makes this the sole selection">Only</button></div><p class="px-2 pt-1.5 text-2xs text-slate-600 leading-snug">Pick exactly one to enable Week. Clearing every box shows all.</p></div>
       </details><div class="flex items-center gap-0.5 rounded-md bg-slate-100 p-0.5"><span class="px-3 py-1.5 rounded-md text-sm font-semibold bg-white text-slate-900 shadow-sm" aria-current="true">Day</span><span class="px-3 py-1.5 rounded-md text-sm font-medium text-slate-500 cursor-not-allowed" aria-disabled="true" tabindex="0" title="Week is available only when the active tab’s filter (Providers ▾ / Rooms ▾) narrows to a single Provider or Room — otherwise a week-wide grid with multiple columns per day stops being readable. Use Only in the filter.">Week</span></div><div class="flex items-center gap-1.5 ml-1">
-          <a href="index.html" class="rounded-md border border-slate-300 bg-white text-slate-700 text-sm font-semibold px-3 py-1.5 hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Today &mdash; jump to the current date">Today</a>
+          <a href="schedule-calendar-day-week-room-view.html" class="rounded-md border border-slate-300 bg-white text-slate-700 text-sm font-semibold px-3 py-1.5 hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Today &mdash; jump to the current date">Today</a>
           <button class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 bg-white text-slate-600 hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-label="Previous" title="Steps by the active Day/Week span — one day at a time in Day view, one week at a time in Week view."><!-- @license lucide-static v1.43.0 - ISC -->
 <svg
   class="lucide lucide-chevron-left w-4 h-4"
@@ -1651,7 +1655,7 @@ Edit</label>
         <p class="pt-1.5 px-1 text-2xs text-slate-600">Pick a day to go straight to it. Today is ringed.</p></div>
       </details>
         </div>
-        <span class="ml-auto flex flex-wrap items-center gap-2"><a href="index.html#ref-block-time" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap" title="Block time &mdash; lunch, admin, personal or reserved time. Front Desk and Office Admin: any Provider, room or the whole Location. Providers: their own time only. Whole-Location closures are Closure Events in Practice Setup."><svg aria-hidden="true" focusable="false"
+        <span class="ml-auto flex flex-wrap items-center gap-2"><a href="schedule-calendar-day-week-room-view.html#ref-block-time" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 whitespace-nowrap" title="Block time &mdash; lunch, admin, personal or reserved time. Front Desk and Office Admin: any Provider, room or the whole Location. Providers: their own time only. Whole-Location closures are Closure Events in Practice Setup."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-plus w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -1688,7 +1692,7 @@ New appointment</a></span>
         <div class="w-72 shrink-0 min-h-0 overflow-y-auto" data-scroll="worklist"><div class="rounded-lg border border-slate-200 bg-white ">
   <div class="px-4 py-2.5 border-b border-slate-100 flex items-center justify-between gap-2" title="Schedule Worklist (ADR-614) — six categories consolidated into one panel: Waitlist / Unscheduled / Cancelled / No Show / Recare Due / Treatment Plan, each its own collapsible accordion section (click a section&rsquo;s header to expand/collapse it). Shown here in the EXPANDED state (one full card per record). Cards are draggable onto the grid beside (ADR-614’s first cross-region drag pattern); each card’s Schedule button is drag-to-schedule’s accessible non-drag equivalent. A COLLAPSED state (one avatar per record) is reachable via the chevron control.">
     <span class="text-sm font-semibold text-slate-900">Schedule Worklist</span>
-    <a href="index.html" class="text-slate-600 hover:text-slate-900 transition-colors" title="Collapse Schedule Worklist"><!-- @license lucide-static v1.43.0 - ISC -->
+    <a href="schedule-calendar-day-week-room-view.html" class="text-slate-600 hover:text-slate-900 transition-colors" title="Collapse Schedule Worklist"><!-- @license lucide-static v1.43.0 - ISC -->
 <svg
   class="lucide lucide-chevron-left w-3.5 h-3.5"
   xmlns="http://www.w3.org/2000/svg"
@@ -2185,7 +2189,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 9:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 9:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2240,7 +2244,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 9:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 9:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2295,7 +2299,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 9:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 9:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2367,7 +2371,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 9:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 9:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2451,7 +2455,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 10:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 10:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2521,7 +2525,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 10:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 10:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2593,7 +2597,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 10:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 10:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2648,7 +2652,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 11:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 11:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2703,7 +2707,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 11:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 11:00 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2790,7 +2794,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2845,7 +2849,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2900,7 +2904,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 11:30 AM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2919,7 +2923,7 @@ Add to waitlist</a><div class="rounded-md border border-slate-200 bg-white p-2.5
   <path d="M8.656 3H19a2 2 0 012 2v10.344" />
 </svg>
 <span>Block time<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 11:30 AM &mdash; filled in</span></span></a></div>
-        </details></td></tr><tr><td class="px-2 py-2 text-xs text-slate-600 align-top w-20 whitespace-nowrap border-t border-slate-100">12:00 PM</td><td rowspan="2" class="p-1 align-top border-t border-l border-slate-200 bg-[repeating-linear-gradient(135deg,#E8EBF1_0px,#E8EBF1_5px,#F4F7FB_5px,#F4F7FB_10px)]"><a href="index.html#ref-block-edit" class="block rounded px-1.5 py-1 text-xs hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-label="Blocked time: Lunch, 12:00&ndash;1:00 PM. Edit or delete this block" title="Dr. Osei &middot; Lunch &middot; repeats weekly, Mon&ndash;Fri &mdash; Edit or delete this block"><span class="flex items-center gap-1 font-semibold text-slate-700"><svg aria-hidden="true" focusable="false"
+        </details></td></tr><tr><td class="px-2 py-2 text-xs text-slate-600 align-top w-20 whitespace-nowrap border-t border-slate-100">12:00 PM</td><td rowspan="2" class="p-1 align-top border-t border-l border-slate-200 bg-[repeating-linear-gradient(135deg,#E8EBF1_0px,#E8EBF1_5px,#F4F7FB_5px,#F4F7FB_10px)]"><a href="schedule-calendar-day-week-room-view.html#ref-block-edit" class="block rounded px-1.5 py-1 text-xs hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-label="Blocked time: Lunch, 12:00&ndash;1:00 PM. Edit or delete this block" title="Dr. Osei &middot; Lunch &middot; repeats weekly, Mon&ndash;Fri &mdash; Edit or delete this block"><span class="flex items-center gap-1 font-semibold text-slate-700"><svg aria-hidden="true" focusable="false"
   class="lucide lucide-coffee w-3 h-3 text-slate-600 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2986,7 +2990,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 12:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 12:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3041,7 +3045,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 12:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 12:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3096,7 +3100,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 12:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 12:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3151,7 +3155,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 12:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 12:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3206,7 +3210,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 1:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 1:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3327,7 +3331,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 1:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 1:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3382,7 +3386,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 1:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 1:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3437,7 +3441,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 1:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 1:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3554,7 +3558,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3609,7 +3613,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3664,7 +3668,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 2:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3719,7 +3723,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3774,7 +3778,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3829,7 +3833,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 2:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3884,7 +3888,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 3:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 3:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3903,7 +3907,7 @@ Lunch<svg aria-hidden="true" focusable="false"
   <path d="M8.656 3H19a2 2 0 012 2v10.344" />
 </svg>
 <span>Block time<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 3:00 PM &mdash; filled in</span></span></a></div>
-        </details></td><td rowspan="4" class="p-1 align-top border-t border-l border-slate-200 bg-[repeating-linear-gradient(135deg,#E8EBF1_0px,#E8EBF1_5px,#F4F7FB_5px,#F4F7FB_10px)]"><a href="index.html#ref-block-edit" class="block rounded px-1.5 py-1 text-xs hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-label="Blocked time: Personal time, 3:00&ndash;5:00 PM. Edit or delete this block" title="Dr. Patel &middot; Personal time &middot; created by Dr. Patel (own time) &mdash; Edit or delete this block"><span class="flex items-center gap-1 font-semibold text-slate-700"><svg aria-hidden="true" focusable="false"
+        </details></td><td rowspan="4" class="p-1 align-top border-t border-l border-slate-200 bg-[repeating-linear-gradient(135deg,#E8EBF1_0px,#E8EBF1_5px,#F4F7FB_5px,#F4F7FB_10px)]"><a href="schedule-calendar-day-week-room-view.html#ref-block-edit" class="block rounded px-1.5 py-1 text-xs hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" aria-label="Blocked time: Personal time, 3:00&ndash;5:00 PM. Edit or delete this block" title="Dr. Patel &middot; Personal time &middot; created by Dr. Patel (own time) &mdash; Edit or delete this block"><span class="flex items-center gap-1 font-semibold text-slate-700"><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3 h-3 text-slate-600 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -3957,7 +3961,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 3:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 3:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4012,7 +4016,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 3:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 3:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4067,7 +4071,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 3:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 3:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4122,7 +4126,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 4:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 4:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4177,7 +4181,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 4:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 4:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4232,7 +4236,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 4:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 4:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4287,7 +4291,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 4:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 4:30 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4342,7 +4346,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Osei &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4397,7 +4401,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Patel &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -4452,7 +4456,7 @@ Personal time</span><span class="block text-2xs text-slate-600 mt-0.5">3:00&ndas
   <path d="M3 9h18" />
   <path d="M8 2v3" />
 </svg>
-<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="index.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
+<span>New appointment<span class="block text-xs font-normal text-slate-600 mt-0.5">Dr. Brooks &middot; 5:00 PM &mdash; filled in</span></span></a><a role="menuitem" href="schedule-calendar-day-week-room-view.html#ref-block-time" class="flex items-start gap-2 rounded px-2 py-1.5 text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Block time &mdash; lunch, admin, personal or reserved time, starting here."><svg aria-hidden="true" focusable="false"
   class="lucide lucide-calendar-off w-3.5 h-3.5 shrink-0"
   xmlns="http://www.w3.org/2000/svg"
  

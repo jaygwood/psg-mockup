@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Plans &amp; Packages (Global Nav Module), new 2026-09-17, ADR-646 (<code>plans-packages.md</code>).</b> This corpus&rsquo;s own new two-tab Global Nav container, merging the retired standalone Memberships nav item with Ledger&rsquo;s retired Package Plans tab into one dynamically-labeled rail entry. Templates tab (this file&rsquo;s own default landing, shown here) reuses <code>membership-plan-template.html</code>&rsquo;s own panels verbatim &mdash; content unchanged, relocation frame only. Packages tab is <code>prepaid-packages-credit-balance.html</code>, unchanged. Illustrates the &ldquo;both Membership and Prepaid Package Configuration enabled&rdquo; Tenant-config state &mdash; <code>membership-plan-template.html</code>/<code>prepaid-packages-credit-balance.html</code> each stay independently reachable, illustrating each &ldquo;only one enabled&rdquo; state. <b>Updated 2026-09-18:</b> the Templates tab&rsquo;s own selector converts from a tab-styled record switcher to <code>record_list</code>() + <code>master_detail</code>() (ADR-642 Decision 3), matching this container&rsquo;s own Packages tab &mdash; Jay&rsquo;s direct flag: the former selector reused the exact tab-strip CSS as this page&rsquo;s own real Membership/Prepaid Packages tabs directly above it. <b>2026-10-08 (stress test C15):</b> the Membership tab&rsquo;s Plan design shows the new optional <b>Retail discount</b>. <b>2026-10-29 (D10):</b> the shared Membership templates show <b>Counts</b>; the Packages tab shows <b>Units of named services</b>. <b>2026-10-29 (C17, Phase 2):</b> the Membership tab shows the <b>Charge sales tax</b> switch; the Package Plan form&rsquo;s switch is drawn as a reference card.
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

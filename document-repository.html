@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 2 batch, small-utility modules &mdash; Document Repository (<code>document-repository.md</code>).</b> New top-level Global Nav module (<code>NAV_ITEM_HREFS</code>) and Patient File&rsquo;s own Documents tab (<code>PATIENT_FILE_TABS</code>), both wired this batch. Default view: recent-touched, Location-scoped (resolved 2026-08-17, no standalone ADR); a patient&rsquo;s documents show at every Location where the patient is seen, not only their Home location (2026-10-08, O2). The last table row is shown for the wrong viewer (ADR-492) &mdash; a deliberate demonstration choice, flagged, not a claim about this persona&rsquo;s own real denial. <b>Rebuilt 2026-09-26 (Jay via chat):</b> master-detail split per ADR-642 Decision 3, as the UI Spec has required since 2026-09-15 &mdash; two-line list rows, default sort by latest version (newest first), link-outs moved to the detail pane, reference cards under the detail. <b>Gap sweep 2026-09-26:</b> tags shown and editable in the detail pane; malware-scan states (Scanning, Quarantined + Retry upload); patient-portal withhold control; Version History rows open earlier versions; &ldquo;What changed&rdquo; note on Upload new version. <b>2026-10-08 (stress test C3):</b> Clinic, Discipline and Care team only on the detail and in Upload; a care-team placeholder row (Office Admin sees no Break glass); a document with a discipline shows by default at its own clinic and the patient&rsquo;s other clinics of that discipline. <b>2026-10-15 (obligation sweep G-04 follow-ups):</b> a fourth scan state, <b>Couldn&rsquo;t scan</b> (<code>unscannable</code>) &mdash; a password-protected upload the malware scan couldn&rsquo;t check; never opened, retried like Quarantined. <b>2026-10-29 (D4, D7):</b> <b>Sensitive area</b> and a photography consent notice on photo upload and capture; <b>Photography consent</b> and <b>Sensitive area</b> rows with the consent badge on a clinical image; Procedure consent and Photography consent document types (reference cards).
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 3 batch, LEDGER (core three) &mdash; Patient Ledger (<code>patient-ledger.md</code>).</b> Fulfills Patient File&rsquo;s own long-standing Ledger tab forward reference &mdash; lights up that tab for the first time. Shown as <b>Tyler Brooks (Biller, Internal)</b> &mdash; this corpus&rsquo;s first Biller-persona screen. Mirrors <code>low-fi/patient-ledger.html</code> 1:1 for content/personas/sample data (Diane Okafor &middot; $140.00 Patient / $200.00 Insurance balance, reconciled against procedure-list.html&rsquo;s own established Charges). <b>ADR-683 (2026-09-23):</b> new Payment Plans panel (between Balance summary and Charges); selecting a plan opens its Plan Detail in a drawer over this tab (<code>patient-ledger-payment-plan-drawer.html</code> shows it open; the Patient Banner&rsquo;s &ldquo;On payment plan&rdquo; line lands there). <b>2026-09-27:</b> posting dialogs drawn (Post charge with every responsible-party type, Post payment as a split button, Post adjustment, Void, Transfer balance, Remove card), Patient credits (Credit on account, Refund, Hold, Record consent, Apply to charge; <code>#credits</code>), the confidential-visit EOB warning and arrangement links; the Phase 2 collections Log follow-up is removed. <b>2026-10-08 (stress test C12):</b> Post charge&rsquo;s reference shows a lien offered only where liens are on at the charge&rsquo;s clinic and pre-selected only for its own case or clinic, and the workers&rsquo; comp provider line. <b>2026-10-08 (stress test C13):</b> Post charge&rsquo;s reference shows a service practitioner&rsquo;s charge &mdash; Patient only, with an alert if insurance is added. <b>2026-10-08 (stress test C14):</b> the global-period notice names the original provider and matches the same license type at the same billing entity; another license type&rsquo;s period is listed in the party list; new reference card <b>Co-management</b> (modifiers 54 and 55). <b>State shown: Create Plan dialog</b> from the Payment plans panel header (ADR-683 Decision 9) &mdash; every open row is already on Diane&rsquo;s plan, so it shows the covered-row and validation states. <a class="underline" href="patient-ledger.html">Close</a>
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -470,7 +474,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:16 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -522,7 +526,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -836,7 +840,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:16 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

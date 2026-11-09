@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 4 batch, INSURANCE (claims core) &mdash; Claim Workspace (<code>claim-workspace.md</code>).</b> Record View, container, practice-wide &mdash; Claims Manager (List) + selected-claim detail (Header/Lines/History/Remittance), plus the WC/TPL Coordination panel unblocked by ADR-558. First of five screens in this batch mirroring low-fi&rsquo;s own identical INSURANCE claims-core batch (2026-09-05) 1:1. Opens styled Wave 4&rsquo;s own INSURANCE module in this corpus. <b>Corrected 2026-09-15, with Jay (two passes):</b> a Patient Banner now renders as real app-shell chrome above this screen&rsquo;s own Toolbar + Tab Bar (<code>page_shell</code>&rsquo;s <code>pinned_html</code> slot), scoped to whichever claim <code>int-02</code> has selected &mdash; <code>patient-banner.md</code>&rsquo;s twelfth confirmed host context. Shows the same four-segment Compact Strip every other host context shows, not a bespoke &ldquo;Selected claim&rdquo; segment. Felix Ostrander&rsquo;s own banner fields (DOB, no Critical Alert/Related Party on file) are new sample data this pass invents. <b>2026-09-24, ADR-687 &mdash; Table and Split view modes:</b> use the <b>Table | Split</b> switch in the Toolbar (xl+). Table = scan/sort/compare, full width, no detail, no Patient Banner; clicking Felix Ostrander opens Split. Split = condensed list + #91027&rsquo;s detail, File appeal moved into the Claim Header, the panel icon returns to Table. Opens in Split here for review; the product lands in Table by default. Below xl only Table renders (a real build opens the detail as a drawer there). <b>2026-10-08 (stress test C14):</b> on a co-managed claim the Claim Header adds a <b>Co-management</b> row (reference card). <b>2026-10-29 (D8):</b> a claim billed under a supervisor shows <b>Supervising provider</b> and <b>Performed by</b> in the Claim Header, with <b>Set supervising provider</b> (reference cards); <b>Edit claim line</b> from an NCCI hold opens the modifier field ready (D5). <b>2026-10-30 (lifecycle-scale stress test, B6 &mdash; W1):</b> the Claim Header gains <b>Sent as</b> (when and by whom it was sent, format, billing provider, rendering NPI) and its Billing provider row reads the same values. <b>Reprint CMS-1500</b> returns the stored file, drawn with Sent as on a paper claim and the &ldquo;couldn&rsquo;t be opened&rdquo; message (reference card).
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -470,7 +474,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:15 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -522,7 +526,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -836,7 +840,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:15 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

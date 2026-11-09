@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; Wave 2 batch, CHART &mdash; Chart Entry: Author, Validate, Sign &amp; Lock (<code>chart-entry-author-validate-sign-lock.md</code>).</b> This module&rsquo;s own anchor Workflow, hosted over the real Clinical History Viewer (built this same batch, replacing the ADR-633 launch-point pass&rsquo;s own Patient Record stand-in). Carries the <b>Supplies used</b> field (platform <code>inventory_usage</code>, ADR-693, 2026-09-25) inside Step 2 &mdash; supplies are logged without leaving the note, with suggestions from this entry&rsquo;s 97014 and 98940; it replaces the ADR-633 Cross-Module Launch card, whose launch-away path survives as the field&rsquo;s &ldquo;Open full inventory&rdquo; link. Only Step 2 (Field Entry) is modeled live; every other step is condensed via this corpus&rsquo;s own <code>stepper()</code> primitive. Sample data ported from low-fi&rsquo;s own screen 1:1 (Chiropractic &middot; Adjustment, Dr. Brooks), this corpus&rsquo;s own Diane Okafor standing in for low-fi&rsquo;s Ruiz/Webb pair. <b>Gap sweep (Chart, 2026-09-26):</b> Step 2 gains Diagnoses &amp; procedures (suggested codes from the visit type), a Case field, Attachments and the full voice controls; Sign is now drawn disabled with its reason; reference cards cover the chart type / template picker, a template-started note, voice recording, consent and failure states, co-signature and patient signature. <b>2026-10-07 (subsidiary guide decisions &mdash; D9):</b> Start new entry lists the visit&rsquo;s Usual chart type (Adjustment) first, marked For this visit, and no longer repeats it under Chart types. <b>2026-10-08 (stress test C12):</b> the Case picker lists another discipline&rsquo;s open cases after this entry&rsquo;s own, labelled by discipline (reference card &ldquo;Case picker &mdash; another discipline&rsquo;s open case&rdquo;). <b>2026-10-08 (stress test C13):</b> Start new entry&rsquo;s note explains what a service practitioner sees &mdash; only chart types that name their license. <b>2026-10-29 (D5, D8):</b> NCCI advisory notices in the Codes panel (Add 25, Dismiss; never blocks Sign), the Supervisor cell on a Procedure, and signing when co-signature is by sample (reference cards). <b>2026-10-29 (D4, D7):</b> procedure-consent notice and Consent cell in the Codes panel (Send to patient, Link existing), the sign-time consent dialog under both settings, Link consent on a signed note, and the photo step with Sensitive area (reference cards). <b>2026-10-30 (lifecycle-scale stress test, B6 &mdash; W2):</b> an author with additional credentials picks <b>Sign as</b> when the entry&rsquo;s Discipline matches one; the signed footer reads &ldquo;Signed by {name}, {License Type}&rdquo; (reference card).
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -524,7 +528,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:15 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -576,7 +580,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -944,7 +948,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:15 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"

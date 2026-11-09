@@ -8,6 +8,10 @@
 </head>
 <body class="h-screen w-screen overflow-hidden bg-white text-slate-900 antialiased">
 <div class="h-full flex flex-col">
+  <div class="shrink-0 bg-slate-900 text-white text-xs px-4 py-1 flex items-center gap-3">
+    <span><strong class="font-semibold">Design mockup</strong> &middot; not in production &middot; all patient data is fictional</span>
+    <a href="index.html" class="ml-auto font-semibold underline underline-offset-2 hover:text-blue-200 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">About this project &rarr;</a>
+  </div>
   <div class="shrink-0 bg-blue-50 border-b border-blue-200 text-blue-900 px-4 py-1.5 text-xs leading-relaxed">
     <b>STYLED MOCKUP &mdash; new 2026-09-26 (ADR-697, with ADR-695/696/698/699) &mdash; Operations Dashboard (<code>operations-dashboard.md</code>).</b> Work in flight across modules, opened from the Action Center pane&rsquo;s <code>radar</code> button. By default each panel lists only items past their attention threshold: Watch (grey), Overdue (amber, with a suggested next step) and Critical (red, where the producing module has already put a system Task in the Action Center). Show all reveals the rest. The Action Center stays the checklist; this screen is where you watch everything else. Tabs render only for queues with something to track at Phase 1: <a class="underline" href="operations-dashboard-front-desk.html">Front Desk</a> &middot; <a class="underline" href="operations-dashboard.html">Biller</a> (Clinical lab results arrive with Lab Orders in Phase 2). Follow-up dialog: <a class="underline" href="new-task-follow-up.html">new-task-follow-up.html</a>. Thresholds are set on the <a class="underline" href="cascade-override-config-console.html#ops-thresholds">Cascade Override Config console</a>.
   </div>
@@ -117,7 +121,7 @@
         </div>
 
         <div class="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
-        <a href="index.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-sm text-slate-700 hover:bg-slate-100 transition-colors"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -487,7 +491,7 @@
   <circle cx="12" cy="12" r="10" />
   <path d="M12 6v6l4 2" />
 </svg>
-<span class="font-semibold tabular-nums">4:50 PM</span></span>
+<span class="font-semibold tabular-nums">7:15 PM</span></span>
           <span class="flex items-center gap-1.5 text-xs text-slate-600">
             <span class="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0"></span>
             Clocked out
@@ -539,7 +543,7 @@
         </a>
 
         <div class="flex-1 overflow-y-auto w-full py-2 space-y-1.5 flex flex-col items-center">
-        <a href="index.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
+        <a href="schedule-calendar-day-week-room-view.html" class="flex items-center justify-center w-8 h-8 rounded-md text-slate-700 hover:bg-slate-100 transition-colors" title="Schedule" aria-label="Schedule"><svg
   class="lucide lucide-calendar w-4 h-4 shrink-0 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -870,7 +874,7 @@
   <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
 </svg>
 </a>
-          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 4:50 PM, Clocked out">
+          <div class="flex items-center justify-center w-8 h-8 rounded-md border border-slate-300 " title="Time Clock Badge &mdash; 7:15 PM, Clocked out">
           <svg
   class="lucide lucide-clock w-3.5 h-3.5 text-slate-600"
   xmlns="http://www.w3.org/2000/svg"
@@ -1985,7 +1989,7 @@ Overdue</span>
     <div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Status</dt><dd class="text-slate-900">Scheduled &middot; reminder sent 9/23 by SMS, no reply</dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Waiting on</dt><dd class="text-slate-900">Patient</dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Since</dt><dd class="text-slate-900">Booked 09/12/2026 &middot; 12 days</dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Expected by</dt><dd class="text-slate-900">09/24/2026 8:30 AM (24 h before the visit) <button type="button" class="ml-1 text-xs text-primary hover:underline" title="Override expected-by (int-12) &mdash; audit-logged; re-bands at once">Edit</button></dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Next step</dt><dd class="text-slate-900">Call the patient to confirm. Log the attempt on the appointment so the Action Center task clears.</dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Blocker</dt><dd class="text-slate-900"><span class="text-slate-600">None noted</span> <button type="button" class="ml-1 text-xs text-primary hover:underline" title="Add blocker note (int-12) &mdash; visible to everyone holding this queue; audit-logged">Add</button></dd></div><div class="grid grid-cols-[110px_1fr] gap-2 py-1.5 border-b border-slate-100 text-sm"><dt class="text-slate-600">Linked tasks</dt><dd class="text-slate-900"><span class="text-slate-600">None open</span></dd></div>
   </dl>
   <div class="px-4 py-3 border-t border-slate-100 flex gap-2">
-    <a href="index.html" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="View record (int-05) &mdash; opens this appointment&rsquo;s Appointment Detail on the Schedule, with Mark confirmed and Log confirmation attempt">View record</a>
+    <a href="schedule-calendar-day-week-room-view.html" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="View record (int-05) &mdash; opens this appointment&rsquo;s Appointment Detail on the Schedule, with Mark confirmed and Log confirmation attempt">View record</a>
     <a href="#ops-ref-fd-followup" class="inline-flex items-center gap-1.5 rounded-md border bg-white border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-3.5 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2" title="Create follow-up Task (int-06) &mdash; pre-filled New Task dialog"><!-- @license lucide-static v1.43.0 - ISC -->
 <svg
   class="lucide lucide-list-plus w-4 h-4"
@@ -2458,7 +2462,7 @@ Create follow-up Task</a>
 
   <div class="px-3 pb-3 space-y-2">
       <div class="flex items-start gap-1.5 py-1.5 px-1 rounded hover:bg-slate-50">
-        <span class="min-w-0 flex-1 leading-snug"><a href="index.html" class="text-primary font-medium hover:underline text-sm" title="Silas Renfro, Appointment 09/22/2026, 10:15 AM &mdash; a self-service cancellation attempt outside the tenant&rsquo;s own Cancellation Policy window (&lt;24h before start_time); status stays scheduled rather than auto-cancelling, and staff must adjudicate manually through the ordinary Cancel action (schedule.md Workflow 5a, ADR-660). role_queue=front_desk gap-fixed this pass &mdash; never specified before 2026-09-21. system_generated (ADR-524), primary click lands on Schedule Calendar&rsquo;s own Appointment Detail for this Appointment, unmodified default jump-routing. Assigned to Jordan Ellis (Front Desk).">Silas Renfro &mdash; late cancellation request</a> <span class="inline-flex items-center gap-1 align-middle"><span class="inline-flex items-center gap-1 rounded-full border bg-info/50 text-info-text border-info px-2 py-0.5 text-2xs font-semibold whitespace-nowrap" title="Assigned to Jordan Ellis (Front Desk)"><svg
+        <span class="min-w-0 flex-1 leading-snug"><a href="schedule-calendar-day-week-room-view.html" class="text-primary font-medium hover:underline text-sm" title="Silas Renfro, Appointment 09/22/2026, 10:15 AM &mdash; a self-service cancellation attempt outside the tenant&rsquo;s own Cancellation Policy window (&lt;24h before start_time); status stays scheduled rather than auto-cancelling, and staff must adjudicate manually through the ordinary Cancel action (schedule.md Workflow 5a, ADR-660). role_queue=front_desk gap-fixed this pass &mdash; never specified before 2026-09-21. system_generated (ADR-524), primary click lands on Schedule Calendar&rsquo;s own Appointment Detail for this Appointment, unmodified default jump-routing. Assigned to Jordan Ellis (Front Desk).">Silas Renfro &mdash; late cancellation request</a> <span class="inline-flex items-center gap-1 align-middle"><span class="inline-flex items-center gap-1 rounded-full border bg-info/50 text-info-text border-info px-2 py-0.5 text-2xs font-semibold whitespace-nowrap" title="Assigned to Jordan Ellis (Front Desk)"><svg
   class="lucide lucide-user w-3 h-3"
   xmlns="http://www.w3.org/2000/svg"
  
@@ -2734,7 +2738,7 @@ Create follow-up Task</a>
 
   <div class="px-3 pb-3 space-y-2">
       <div class="flex items-start gap-1.5 py-1.5 px-1 rounded hover:bg-slate-50">
-        <span class="min-w-0 flex-1 leading-snug"><a href="index.html" class="text-primary font-medium hover:underline text-sm" title="Holt Bannerman, Appointment 09/25/2026, 9:00 AM &mdash; still status=scheduled within Schedule Sweep Settings.unconfirmed_appointment_alert_hours (default 24) of start_time; the reminder Campaign already asked for confirmation and got no reply (schedule.md Workflow 25, ADR-663). New, 2026-09-21. system_generated (ADR-524), primary click lands on Schedule Calendar&rsquo;s own Appointment Detail (Calendar/Day-View grid), unmodified default jump-routing. Unassigned &mdash; open Task Detail (chevron) to Assign.">Holt Bannerman &mdash; unconfirmed, appt. tomorrow 9:00 AM</a> <span class="inline-flex items-center gap-1 align-middle"><span class="inline-flex items-center gap-1 rounded-full border bg-warning/50 text-warning-text border-warning px-2 py-0.5 text-2xs font-semibold whitespace-nowrap" title="Still unconfirmed within 24 hours of start_time (Schedule Sweep Settings.unconfirmed_appointment_alert_hours)"><svg
+        <span class="min-w-0 flex-1 leading-snug"><a href="schedule-calendar-day-week-room-view.html" class="text-primary font-medium hover:underline text-sm" title="Holt Bannerman, Appointment 09/25/2026, 9:00 AM &mdash; still status=scheduled within Schedule Sweep Settings.unconfirmed_appointment_alert_hours (default 24) of start_time; the reminder Campaign already asked for confirmation and got no reply (schedule.md Workflow 25, ADR-663). New, 2026-09-21. system_generated (ADR-524), primary click lands on Schedule Calendar&rsquo;s own Appointment Detail (Calendar/Day-View grid), unmodified default jump-routing. Unassigned &mdash; open Task Detail (chevron) to Assign.">Holt Bannerman &mdash; unconfirmed, appt. tomorrow 9:00 AM</a> <span class="inline-flex items-center gap-1 align-middle"><span class="inline-flex items-center gap-1 rounded-full border bg-warning/50 text-warning-text border-warning px-2 py-0.5 text-2xs font-semibold whitespace-nowrap" title="Still unconfirmed within 24 hours of start_time (Schedule Sweep Settings.unconfirmed_appointment_alert_hours)"><svg
   class="lucide lucide-clock w-3 h-3"
   xmlns="http://www.w3.org/2000/svg"
  
